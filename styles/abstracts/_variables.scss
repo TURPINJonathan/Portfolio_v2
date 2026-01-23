@@ -1,1 +1,131 @@
-// Variables SCSS (placeholder)
+// Element Colors
+$background-color: #0b0d10;
+$border-color: #2a2f3a;
+
+// Color Palette
+$primary-color: #121521;
+$secondary-color: #171a26;
+$accent-color: #7c7cff;
+$accent-sub-color: #a38bff;
+$danger-color: #ff4d6d;
+$success-color: #3dff9e;
+
+// Text Colors
+$primary-text-color: #e9ecf2;
+$secondary-text-color: #b3bac7;
+
+// Font
+$title-font:
+  var(--font-space-grotesk),
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  'Roboto',
+  'Arial',
+  serif;
+$text-font:
+  var(--font-ibm-plex-sans),
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  'Roboto',
+  'Arial',
+  sans-serif;
+$font-mono:
+  var(--font-jetbrains-mono), ui-monospace, sfmono-regular, menlo, monaco, consolas, 'Liberation Mono', 'Courier New',
+  monospace;
+$font-size-title-xl: clamp(2.125rem, 1.716rem + 1.278vw, 3.25rem);
+$font-size-title-md: clamp(1.5rem, 1.318rem + 0.568vw, 2rem);
+$font-size-title-sm: clamp(1.125rem, 1.034rem + 0.284vw, 1.375rem);
+$font-size-text-md: clamp(1rem, 0.955rem + 0.142vw, 1.125rem);
+$font-size-text-sm: clamp(0.875rem, 0.83rem + 0.142vw, 1rem);
+$font-size-mono-sm: clamp(0.75rem, 0.705rem + 0.142vw, 0.875rem);
+$line-height-text-md: 1.55;
+$line-height-title: 1.2;
+$content-max-width: 70ch;
+
+// Layout / Grid
+$container-max-width: 1200px;
+$gutter-mobile: 16px;
+$gutter-desktop: 24px;
+$space-xs: 8px;
+$space-sm: 16px;
+$space-md: 24px;
+$space-lg: 32px;
+$space-xl: 48px;
+$space-2xl: 64px;
+
+// Section spacing (48–72px)
+$section-padding-block: clamp(3rem, 2.455rem + 1.705vw, 4.5rem);
+
+// Motion
+$motion-duration-fast: 180ms;
+$motion-duration: 220ms;
+$motion-duration-slow: 260ms;
+$motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+// Accessibility
+$tap-target-min: 44px;
+$focus-ring-width: 2px;
+$focus-ring-offset: 2px;
+$focus-ring-color: $accent-color;
+
+:root {
+  --background-color: #{$background-color};
+  --border-color: #{$border-color};
+
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+  --accent-color: #{$accent-color};
+  --accent-sub-color: #{$accent-sub-color};
+  --danger-color: #{$danger-color};
+  --success-color: #{$success-color};
+
+  --primary-text-color: #{$primary-text-color};
+  --secondary-text-color: #{$secondary-text-color};
+
+  --title-font: #{$title-font};
+  --text-font: #{$text-font};
+  --font-mono: #{$font-mono};
+
+  --font-size-title-xl: #{$font-size-title-xl};
+  --font-size-title-md: #{$font-size-title-md};
+  --font-size-title-sm: #{$font-size-title-sm};
+
+  --font-size-text-md: #{$font-size-text-md};
+  --font-size-text-sm: #{$font-size-text-sm};
+  --font-size-mono-sm: #{$font-size-mono-sm};
+
+  --line-height-text-md: #{$line-height-text-md};
+  --line-height-title: #{$line-height-title};
+
+  --content-max-width: #{$content-max-width};
+
+  --container-max-width: #{$container-max-width};
+  --gutter: #{$gutter-mobile};
+
+  --space-xs: #{$space-xs};
+  --space-sm: #{$space-sm};
+  --space-md: #{$space-md};
+  --space-lg: #{$space-lg};
+  --space-xl: #{$space-xl};
+  --space-2xl: #{$space-2xl};
+
+  --section-padding-block: #{$section-padding-block};
+
+  --motion-duration-fast: #{$motion-duration-fast};
+  --motion-duration: #{$motion-duration};
+  --motion-duration-slow: #{$motion-duration-slow};
+  --motion-ease: #{$motion-ease};
+
+  --tap-target-min: #{$tap-target-min};
+  --focus-ring-width: #{$focus-ring-width};
+  --focus-ring-offset: #{$focus-ring-offset};
+  --focus-ring-color: #{$focus-ring-color};
+}
+
+@media (width >= 768px) {
+  :root {
+    --gutter: #{$gutter-desktop};
+  }
+}

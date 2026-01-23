@@ -5,3 +5,8 @@
   - Tailwind reste dans app/globals.css.
   - Le reste est structuré dans /styles.
 */
+
+html,
+body {
+  font-family: var(--text-font);
+}
