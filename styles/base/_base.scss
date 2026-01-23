@@ -1,11 +1,42 @@
-// @use "../abstracts/variables" as *;
+html {
+  font-size: 16px;
 
-// :root {
-//   --background: #{$color-background};
-//   --foreground: #{$color-foreground};
-// }
+  body {
+    background-color: var(--background-color);
+    color: var(--primary-text-color);
+    font-family: var(--text-font);
+    font-size: var(--font-size-text-md);
+    line-height: var(--line-height-text-md);
 
-// body {
-//   background: var(--background);
-//   color: var(--foreground);
-// }
+    h1,
+    h2,
+    h3 {
+      font-family: var(--title-font);
+      font-weight: 700;
+      line-height: var(--line-height-title);
+    }
+
+    h1 {
+      font-size: var(--font-size-title-xl);
+    }
+
+    h2 {
+      font-size: var(--font-size-title-md);
+    }
+
+    h3 {
+      font-size: var(--font-size-title-sm);
+      font-weight: 600;
+    }
+
+    p {
+      max-width: var(--content-max-width);
+    }
+
+    code,
+    pre {
+      font-family: var(--font-mono);
+      font-size: var(--font-size-mono-sm);
+    }
+  }
+}
