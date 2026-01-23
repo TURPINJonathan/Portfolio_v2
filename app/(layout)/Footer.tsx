@@ -1,3 +1,3 @@
 export default function FooterLayout() {
-    return <footer>Footer Content</footer>;
+  return <footer>Footer Content</footer>;
 }

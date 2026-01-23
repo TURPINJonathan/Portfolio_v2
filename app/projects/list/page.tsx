@@ -1,3 +1,3 @@
 export default function ProjectsList() {
-    return <div>Ma liste de projects</div>;
+  return <div>Ma liste de projects</div>;
 }
