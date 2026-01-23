@@ -1,7 +1,6 @@
-import "@app/globals.scss";
-import FooterLayout from "@layout/Footer";
-import HeaderLayout from "@layout/Header";
-
+import '@app/globals.scss';
+import FooterLayout from '@layout/Footer';
+import HeaderLayout from '@layout/Header';
 
 export default function RootLayout({
   children,

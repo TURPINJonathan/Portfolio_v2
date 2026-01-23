@@ -1,9 +1,9 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function HeaderLayout() {
-    return (
+  return (
     <header>
-        <Link href="/projects/list">Projects List</Link>
+      <Link href="/projects/list">Projects List</Link>
     </header>
-    );
+  );
 }
