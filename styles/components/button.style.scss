@@ -1,0 +1,227 @@
+@use '../abstracts/mixins' as mixins;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background:
+    linear-gradient(90deg, var(--btn-bg-from), var(--btn-bg-to)) padding-box,
+    linear-gradient(90deg, var(--btn-border-from), var(--btn-border-to)) border-box;
+  color: var(--btn-text-color, var(--primary-text-color));
+  cursor: pointer;
+  font-weight: 600;
+  gap: var(--space-xs);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    transform var(--motion-duration) var(--motion-ease),
+    filter var(--motion-duration) ease,
+    box-shadow 900ms var(--motion-ease);
+  user-select: none;
+
+  &.btn-appearance-ghost {
+    --btn-base-surface: transparent;
+
+    background:
+      linear-gradient(transparent, transparent) padding-box,
+      linear-gradient(90deg, var(--btn-border-from), var(--btn-border-to)) border-box;
+
+    &:hover {
+      background:
+        linear-gradient(rgb(255 255 255 / 3%), rgb(255 255 255 / 3%)) padding-box,
+        linear-gradient(90deg, var(--btn-border-from), var(--btn-border-to)) border-box;
+    }
+  }
+
+  &.btn-size-xs {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 0.8125rem;
+  }
+
+  &.btn-size-sm {
+    min-width: 38px;
+    min-height: 38px;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-size: var(--font-size-text-sm);
+  }
+
+  &.btn-size-md {
+    min-width: var(--tap-target-min);
+    min-height: var(--tap-target-min);
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: var(--font-size-text-md);
+  }
+
+  &.btn-size-lg {
+    min-width: 52px;
+    min-height: 52px;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: 8px;
+    font-size: var(--font-size-title-sm);
+  }
+
+  /* Defaults: accent gradient CTA */
+  --btn-base-surface: var(--primary-color);
+  --btn-border-from: var(--accent-color);
+  --btn-border-to: var(--accent-sub-color, var(--accent-color));
+  --btn-bg-from: var(--accent-color);
+  --btn-bg-to: var(--accent-sub-color, var(--accent-color));
+
+  @include mixins.sweep-accent-gradient(
+    $accent-from: var(--btn-border-from),
+    $accent-to: var(--btn-border-to),
+    $duration: 900ms,
+    $opacity: 0.18,
+    $hover-shadow: (
+      0 0 0 1px rgba(255, 255, 255, 0.06),
+      0 0 0 1px var(--btn-border-from),
+      0 12px 34px rgba(0, 0, 0, 0.22),
+    )
+  );
+
+  &::after {
+    position: absolute;
+    z-index: 0;
+    border-radius: inherit;
+    background:
+      radial-gradient(120px 60px at 20% 0%, rgb(255 255 255 / 22%), transparent 60%),
+      radial-gradient(140px 70px at 80% 120%, rgb(255 255 255 / 18%), transparent 55%);
+    content: '';
+    inset: -2px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--motion-duration) ease;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:hover {
+    filter: brightness(1.04) saturate(1.06);
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.btn-outline {
+    --btn-text-color: var(--primary-text-color);
+
+    background:
+      linear-gradient(var(--btn-base-surface), var(--btn-base-surface)) padding-box,
+      linear-gradient(90deg, var(--btn-border-from), var(--btn-border-to)) border-box;
+  }
+
+  &.is-disabled,
+  &:disabled,
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    filter: none;
+    opacity: 0.6;
+    transform: none;
+  }
+
+  /* Color variants (compatibles avec btn-<variant>) */
+  &.btn-default {
+    --btn-base-surface: var(--primary-color);
+    --btn-border-from: var(--border-color);
+    --btn-border-to: var(--border-color);
+    --btn-bg-from: transparent;
+    --btn-bg-to: transparent;
+    --btn-text-color: var(--primary-text-color);
+
+    border-color: var(--border-color);
+    background: transparent;
+  }
+
+  &.btn-accent {
+    --btn-base-surface: var(--primary-color);
+    --btn-border-from: var(--accent-color);
+    --btn-border-to: var(--accent-sub-color, var(--accent-color));
+    --btn-bg-from: var(--accent-color);
+    --btn-bg-to: var(--accent-sub-color, var(--accent-color));
+  }
+
+  &.btn-primary {
+    --btn-base-surface: var(--primary-color);
+    --btn-border-from: var(--primary-sub-color, var(--primary-color));
+    --btn-border-to: var(--accent-color);
+    --btn-bg-from: var(--primary-color);
+    --btn-bg-to: var(--primary-sub-color, var(--primary-color));
+  }
+
+  &.btn-secondary {
+    --btn-base-surface: var(--secondary-color);
+    --btn-border-from: var(--secondary-sub-color, var(--secondary-color));
+    --btn-border-to: var(--accent-color);
+    --btn-bg-from: var(--secondary-color);
+    --btn-bg-to: var(--secondary-sub-color, var(--secondary-color));
+  }
+
+  &.btn-success {
+    --btn-base-surface: var(--primary-color);
+    --btn-border-from: var(--success-color);
+    --btn-border-to: var(--success-sub-color, var(--success-color));
+    --btn-bg-from: var(--success-color);
+    --btn-bg-to: var(--success-sub-color, var(--success-color));
+  }
+
+  &:not(.btn-outline).btn-success {
+    --btn-text-color: rgb(10 14 20 / 92%);
+  }
+
+  &.btn-danger {
+    --btn-base-surface: var(--primary-color);
+    --btn-border-from: var(--danger-color);
+    --btn-border-to: var(--danger-sub-color, var(--danger-color));
+    --btn-bg-from: var(--danger-color);
+    --btn-bg-to: var(--danger-sub-color, var(--danger-color));
+  }
+
+  &.btn-warn {
+    --btn-base-surface: var(--primary-color);
+    --btn-border-from: var(--warn-color);
+    --btn-border-to: var(--warn-sub-color, var(--warn-color));
+    --btn-bg-from: var(--warn-color);
+    --btn-bg-to: var(--warn-sub-color, var(--warn-color));
+  }
+
+  &:not(.btn-outline).btn-warn {
+    --btn-text-color: rgb(10 14 20 / 92%);
+  }
+
+  &.btn-appearance-bare {
+    border: none;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+
+    &:hover,
+    &:focus,
+    &:focus-visible,
+    &:active {
+      box-shadow: none;
+      filter: brightness(1.08) saturate(1.06);
+      outline: none;
+    }
+  }
+}

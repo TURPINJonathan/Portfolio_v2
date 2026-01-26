@@ -1,0 +1,110 @@
+@mixin sweep-accent(
+  $accent: var(--accent-color),
+  $duration: 1s,
+  $base-angle: 90deg,
+  $sweep-angle: 240deg,
+  $base-from: transparent,
+  $base-to: $accent,
+  $band-left: 42%,
+  $band-center: 50%,
+  $band-right: 58%,
+  $sweep-left: -60%,
+  $sweep-width: 220%,
+  $from-x: -40%,
+  $to-x: 40%,
+  $easing: cubic-bezier(0.2, 0.8, 0.2, 1),
+  $hover-shadow: null
+) {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient($base-angle, $base-from, $base-to);
+  isolation: isolate;
+  transform: translateZ(0);
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: $sweep-left;
+    width: $sweep-width;
+    background-image: linear-gradient(
+      $sweep-angle,
+      transparent 0%,
+      transparent $band-left,
+      $accent $band-center,
+      transparent $band-right,
+      transparent 100%
+    );
+    content: '';
+    pointer-events: none;
+    transform: translateX($from-x) translateZ(0);
+    transition: transform $duration $easing;
+    will-change: transform;
+  }
+
+  &:hover {
+    &::before {
+      transform: translateX($to-x);
+    }
+
+    @if $hover-shadow {
+      box-shadow: $hover-shadow;
+    }
+  }
+}
+
+@mixin sweep-accent-gradient(
+  $accent-from: var(--accent-color),
+  $accent-to: var(--accent-sub-color),
+  $duration: 1s,
+  $sweep-angle: 240deg,
+  $band-left: 42%,
+  $band-center: 50%,
+  $band-right: 58%,
+  $sweep-left: -60%,
+  $sweep-width: 220%,
+  $from-x: -40%,
+  $to-x: 40%,
+  $easing: cubic-bezier(0.2, 0.8, 0.2, 1),
+  $opacity: 0.22,
+  $hover-shadow: null
+) {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateZ(0);
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: $sweep-left;
+    width: $sweep-width;
+    background-image: linear-gradient(
+      $sweep-angle,
+      transparent 0%,
+      transparent $band-left,
+      $accent-from $band-center,
+      $accent-to $band-right,
+      transparent 100%
+    );
+    content: '';
+    opacity: $opacity;
+    pointer-events: none;
+    transform: translateX($from-x) translateZ(0);
+    transition: transform $duration $easing;
+    will-change: transform;
+  }
+
+  &:hover {
+    &::before {
+      transform: translateX($to-x);
+    }
+
+    @if $hover-shadow {
+      box-shadow: $hover-shadow;
+    }
+  }
+}
