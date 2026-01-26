@@ -71,23 +71,26 @@ export default function ButtonComponent({
   );
 
   if (isLink) {
+    if (disabled) {
+      return (
+        <span className={classes} aria-disabled={true} aria-label={ariaLabel ?? label}>
+          {content}
+        </span>
+      );
+    }
+
+    const ariaCurrentProps = ariaCurrent ? { 'aria-current': ariaCurrent } : undefined;
+
     if (isExternal) {
       return (
         <a
-          href={disabled ? undefined : href}
+          href={href}
           className={classes}
           target={target ?? '_blank'}
           rel={rel ?? 'noreferrer noopener'}
-          aria-disabled={disabled}
           aria-label={ariaLabel ?? label}
-          aria-current={ariaCurrent}
-          onClick={(event) => {
-            if (disabled) {
-              event.preventDefault();
-              return;
-            }
-            onClick?.(event);
-          }}
+          {...ariaCurrentProps}
+          onClick={onClick}
         >
           {content}
         </a>
@@ -95,20 +98,7 @@ export default function ButtonComponent({
     }
 
     return (
-      <Link
-        href={href}
-        className={classes}
-        aria-disabled={disabled}
-        aria-label={ariaLabel ?? label}
-        aria-current={ariaCurrent}
-        onClick={(event) => {
-          if (disabled) {
-            event.preventDefault();
-            return;
-          }
-          onClick?.(event);
-        }}
-      >
+      <Link href={href} className={classes} aria-label={ariaLabel ?? label} {...ariaCurrentProps} onClick={onClick}>
         {content}
       </Link>
     );

@@ -16,19 +16,19 @@ export default function HeaderLayout() {
   const burgerButtonRef = useRef<HTMLButtonElement | null>(null);
   const closeTimerRef = useRef<number | null>(null);
 
-  const openMenu = useCallback(() => {
+  const openMenu = useCallback((): void => {
     if (closeTimerRef.current) window.clearTimeout(closeTimerRef.current);
     setIsMenuMounted(true);
     setIsMenuOpen(true);
   }, []);
 
-  const closeMenu = useCallback(() => {
+  const closeMenu = useCallback((): void => {
     setIsMenuOpen(false);
     if (closeTimerRef.current) window.clearTimeout(closeTimerRef.current);
     closeTimerRef.current = window.setTimeout(() => setIsMenuMounted(false), 200);
   }, []);
 
-  const toggleMenu = useCallback(() => {
+  const toggleMenu = useCallback((): void => {
     if (isMenuOpen) closeMenu();
     else openMenu();
   }, [closeMenu, isMenuOpen, openMenu]);
