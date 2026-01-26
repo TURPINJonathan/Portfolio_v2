@@ -4,11 +4,17 @@ $border-color: #2a2f3a;
 
 // Color Palette
 $primary-color: #121521;
+$primary-sub-color: #1a1f30;
 $secondary-color: #171a26;
-$accent-color: #7c7cff;
-$accent-sub-color: #a38bff;
+$secondary-sub-color: #20263a;
+$accent-color: #846bb5;
+$accent-sub-color: #f5b3f9;
 $danger-color: #ff4d6d;
+$danger-sub-color: #ff8aa0;
 $success-color: #3dff9e;
+$success-sub-color: #12d784;
+$warn-color: #fc0;
+$warn-sub-color: #ff7a00;
 
 // Text Colors
 $primary-text-color: #e9ecf2;
@@ -75,11 +81,17 @@ $focus-ring-color: $accent-color;
   --border-color: #{$border-color};
 
   --primary-color: #{$primary-color};
+  --primary-sub-color: #{$primary-sub-color};
   --secondary-color: #{$secondary-color};
+  --secondary-sub-color: #{$secondary-sub-color};
   --accent-color: #{$accent-color};
   --accent-sub-color: #{$accent-sub-color};
   --danger-color: #{$danger-color};
+  --danger-sub-color: #{$danger-sub-color};
   --success-color: #{$success-color};
+  --success-sub-color: #{$success-sub-color};
+  --warn-color: #{$warn-color};
+  --warn-sub-color: #{$warn-sub-color};
 
   --primary-text-color: #{$primary-text-color};
   --secondary-text-color: #{$secondary-text-color};

@@ -54,6 +54,26 @@ html {
     .tap-target {
       min-width: var(--tap-target-min);
       min-height: var(--tap-target-min);
+      padding: var(--space-xs) var(--space-sm);
+    }
+
+    .skip-link {
+      position: absolute;
+      z-index: 9999;
+      top: var(--space-sm);
+      left: var(--space-sm);
+      padding: var(--space-xs) var(--space-sm);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background: var(--primary-color);
+      color: var(--primary-text-color);
+      text-decoration: none;
+      transform: translateY(-200%);
+      transition: transform var(--motion-duration) var(--motion-ease);
+    }
+
+    .skip-link:focus-visible {
+      transform: translateY(0);
     }
 
     /* Accessibility */
