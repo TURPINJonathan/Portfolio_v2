@@ -13,6 +13,7 @@ export default function HeaderLayout() {
   const navId = useId();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuMounted, setIsMenuMounted] = useState(false);
+  const [isElevated, setIsElevated] = useState(false);
   const burgerButtonRef = useRef<HTMLButtonElement | null>(null);
   const closeTimerRef = useRef<number | null>(null);
 
@@ -39,8 +40,18 @@ export default function HeaderLayout() {
     };
   }, []);
 
+  useEffect(() => {
+    const onScroll = (): void => {
+      setIsElevated(window.scrollY > 0);
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header id="header-container" className="w-full">
+    <header id="header-container" className={`site-header glass-surface${isElevated ? ' is-elevated' : ''}`}>
       <div className="container">
         <div className="relative flex w-full items-center gap-4 py-4">
           <div className="flex items-center gap-3">
