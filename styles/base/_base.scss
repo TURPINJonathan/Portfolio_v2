@@ -2,7 +2,9 @@ html {
   font-size: 16px;
 
   body {
-    background-color: var(--background-color);
+    background:
+      radial-gradient(60% 40% at 50% 60%, rgb(124 124 255 / 12%), transparent 70%),
+      linear-gradient(180deg, #0b0d10 0%, #121521 50%, #0b0d10 100%), var(--background-color);
     color: var(--primary-text-color);
     font-family: var(--text-font);
     font-size: var(--font-size-text-md);
