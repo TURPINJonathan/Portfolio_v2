@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Button } from '@components';
 
 export const metadata: Metadata = {
-  title: 'Jonathan T | Développeur fullstack',
+  title: 'Développeur fullstack',
   description:
     'Portfolio — développement web, projets, expertise front-end et back-end. Découvre mes réalisations et les technologies que j’utilise.',
 };
@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="container section">
       <header>
-        <h1>Jonathan T | Développeur fullstack</h1>
+        <h1>Jonathan TURPIN | Développeur fullstack</h1>
         <p>
           Je conçois des interfaces modernes, rapides et accessibles, avec une attention particulière à la qualité
           (performance, SEO, design system) et à l’expérience utilisateur.
