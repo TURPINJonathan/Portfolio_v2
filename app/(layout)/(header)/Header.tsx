@@ -3,14 +3,14 @@
 import { Button } from '@components';
 import StakLogo from '@pictures/Stak_logo.png';
 import { usePathname } from 'next/navigation';
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import MobileMenuButton from './MobileMenuButton';
 import MobileNavDrawer from './MobileNavDrawer';
 import { DESKTOP_NAV_LINKS, MOBILE_NAV_LINKS } from '@constants';
 
 export default function HeaderLayout() {
   const pathname = usePathname();
-  const navId = useId();
+  const navId = 'mobile-nav-drawer';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuMounted, setIsMenuMounted] = useState(false);
   const [isElevated, setIsElevated] = useState(false);
@@ -53,7 +53,7 @@ export default function HeaderLayout() {
   return (
     <header id="header-container" className={`site-header glass-surface${isElevated ? ' is-elevated' : ''}`}>
       <div className="container">
-        <div className="relative flex w-full items-center gap-4 py-4">
+        <div className="relative flex w-full items-center gap-4 pt-2">
           <div className="flex items-center gap-3">
             <Button
               label="Accueil"
@@ -85,7 +85,7 @@ export default function HeaderLayout() {
 
           <div className="ml-auto flex items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
-              <Button label="Contactez-moi" variant="accent" size="sm" disabled />
+              <Button label="Contactez-moi" variant="accent" size="sm" />
             </div>
 
             <MobileMenuButton ref={burgerButtonRef} open={isMenuOpen} controlsId={navId} onToggle={toggleMenu} />
