@@ -7,14 +7,18 @@ export default function SiteLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <a className="skip-link" href="#main-content">
         Aller au contenu
       </a>
 
       <HeaderLayout />
-      <main id="main-content">{children}</main>
+
+      <main id="main-content" className="flex-1">
+        {children}
+      </main>
+
       <FooterLayout />
-    </>
+    </div>
   );
 }

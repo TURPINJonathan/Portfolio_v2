@@ -134,6 +134,12 @@ $focus-ring-color: $accent-color;
   --focus-ring-width: #{$focus-ring-width};
   --focus-ring-offset: #{$focus-ring-offset};
   --focus-ring-color: #{$focus-ring-color};
+
+  --glass-blur: 14px;
+  --glass-bg: transparent;
+  --glass-bg-elevated: #{rgba($background-color, 0.28)};
+  --glass-border-elevated: #{rgba($primary-text-color, 0.1)};
+  --glass-shadow-elevated: 0 10px 30px #{rgba(#000, 0.35)};
 }
 
 @media (width >= 768px) {

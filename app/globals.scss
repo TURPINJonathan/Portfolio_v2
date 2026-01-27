@@ -8,5 +8,10 @@
 
 html,
 body {
+  min-height: 100vh;
   font-family: var(--text-font);
+}
+
+#main-content {
+  scroll-margin-top: 96px;
 }

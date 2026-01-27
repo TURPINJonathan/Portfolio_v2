@@ -78,6 +78,34 @@ html {
       transform: translateY(0);
     }
 
+    .site-header {
+      position: sticky;
+      z-index: 50;
+      top: 0;
+      width: 100%;
+    }
+
+    .glass-surface {
+      border-bottom: 1px solid transparent;
+      backdrop-filter: blur(var(--glass-blur));
+      background: var(--glass-bg);
+      box-shadow: none;
+      transition:
+        background-color var(--motion-duration) var(--motion-ease),
+        border-color var(--motion-duration) var(--motion-ease),
+        box-shadow var(--motion-duration) var(--motion-ease);
+
+      @supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))) {
+        backdrop-filter: blur(var(--glass-blur));
+      }
+    }
+
+    .glass-surface.is-elevated {
+      border-bottom-color: var(--glass-border-elevated);
+      background: var(--glass-bg-elevated);
+      box-shadow: var(--glass-shadow-elevated);
+    }
+
     /* Accessibility */
     :where(a, button, input, textarea, select, summary, [tabindex]:not([tabindex='-1'])):focus-visible {
       outline: var(--focus-ring-width) solid var(--focus-ring-color);
