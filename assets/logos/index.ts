@@ -1,0 +1,13 @@
+export { default as Angular } from './angular.png';
+export { default as Expo } from './expo.webp';
+export { default as Mysql } from './mysql.png';
+export { default as Php } from './php.png';
+export { default as React } from './react.png';
+export { default as Symfony } from './symfony.webp';
+export { default as Typescript } from './typescript.png';
+export { default as Vuedotjs } from './vuejs.webp';
+export { default as Vite } from './vite.png';
+export { default as Csharp } from './c_sharp.png';
+export { default as Pinia } from './pinia.svg';
+export { default as ReactNative } from './react.png';
+export { default as Nextjs } from './next_js.png';

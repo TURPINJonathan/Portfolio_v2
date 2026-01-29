@@ -61,8 +61,8 @@ $space-lg: 32px;
 $space-xl: 48px;
 $space-2xl: 64px;
 
-// Section spacing (48–72px)
-$section-padding-block: clamp(3rem, 2.455rem + 1.705vw, 4.5rem);
+// Section spacing (32–56px)
+$section-padding-block: clamp(2rem, 1.545rem + 1.42vw, 3.5rem);
 
 // Motion
 $motion-duration-fast: 180ms;

@@ -1,59 +1,86 @@
-import type { Metadata } from 'next';
-import { Button } from '@components';
+import Image from 'next/image';
+import stakWorkHard from '@pictures/Stak_work_hard.png';
+import glowLine from '@pictures/glow_line.png';
+import { Button, InfiniteScroller, JsonLd } from '@components';
+import { createPageMetadata } from '@/lib/seo/metadata';
+import { getHomeJsonLd } from '@/lib/seo/structuredData';
+import { PROFILE_HARD_SKILLS } from '@constants';
 
-export const metadata: Metadata = {
-  title: 'Développeur fullstack',
+export const metadata = createPageMetadata({
+  title: 'Développeur web fullstack',
   description:
-    'Portfolio — développement web, projets, expertise front-end et back-end. Découvre mes réalisations et les technologies que j’utilise.',
-};
+    'Jonathan Turpin — développeur web fullstack. Portfolio : projets, expertise front-end et back-end, performance, SEO et accessibilité.',
+  canonical: '/',
+});
 
 export default function Home() {
+  const structuredData = getHomeJsonLd();
+
   return (
-    <div className="container section">
-      <header>
-        <h1>Jonathan TURPIN | Développeur fullstack</h1>
-        <p>
-          Je conçois des interfaces modernes, rapides et accessibles, avec une attention particulière à la qualité
-          (performance, SEO, design system) et à l’expérience utilisateur.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-3">
-          <Button href="/projects/list" variant="accent">
-            Voir les projets
-          </Button>
-          <Button href="/projects/list" appearance="ghost" variant="primary">
-            Parcourir le portfolio
-          </Button>
+    <>
+      <JsonLd id="jsonld-home" data={structuredData} />
+
+      <section aria-labelledby="home-title" className="container section relative overflow-hidden">
+        <div className="flex flex-col items-start gap-2 md:max-w-[60%] md:gap-10">
+          <h1 id="home-title" className="leading-tight">
+            <span className="block text-xl sm:text-2xl md:text-3xl font-bold">Jonathan Turpin</span>
+            <span className="block mt-1 text-lg sm:text-xl md:text-2xl italic font-medium">
+              Développeur web fullstack
+            </span>
+          </h1>
+
+          <p className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight title-font">
+            Je conçois et développe des applications solides, pensées pour durer.
+          </p>
+
+          <p className="leading-relaxed">
+            Développeur fullstack depuis plusieurs années, j&apos;accompagne entreprises et startups dans la conception
+            d&apos;applications web et mobiles performantes et maintenables.
+          </p>
+
+          <div className="flex flex-row items-center justify-evenly gap-2 sm:gap-8 mx-auto flex-wrap">
+            <Button href="/projects/list" variant="accent" className="!min-w-[170px] justify-center">
+              Voir mes projets
+            </Button>
+            <Button href="/contact" isOutline variant="primary" className="!min-w-[180px] justify-center">
+              Me contacter
+            </Button>
+          </div>
         </div>
-      </header>
 
-      <section aria-labelledby="home-about" className="mt-8">
-        <h2 id="home-about">Ce que tu trouveras ici</h2>
-        <p>
-          Une sélection de projets (front, full-stack, UI), des choix techniques expliqués, et une base propre
-          (accessibilité, balisage sémantique, metadata Next.js).
-        </p>
-      </section>
-
-      <section aria-labelledby="home-skills" className="mt-6">
-        <h2 id="home-skills">Compétences & stack</h2>
-        <p>
-          Next.js / React / TypeScript, styles SCSS, composants réutilisables, et une approche orientée produit :
-          itérations rapides, design cohérent, et code maintenable.
-        </p>
-      </section>
-
-      <section aria-labelledby="home-projects" className="mt-6">
-        <h2 id="home-projects">Derniers projets</h2>
-        <p>
-          Tu peux commencer par la liste des projets : elle sert de point d’entrée principal et sera enrichie au fil du
-          temps.
-        </p>
-        <div className="mt-3">
-          <Button href="/projects/list" isOutline variant="accent">
-            Accéder à la liste
-          </Button>
+        <div className="w-full flex justify-end md:absolute md:bottom-0 md:right-0 md:-z-10 md:w-[40%] md:min-w-[200px] md:max-w-[520px]">
+          <Image
+            src={stakWorkHard}
+            alt="Portrait de Jonathan Turpin"
+            priority
+            className="pointer-events-none select-none h-auto w-[75%] max-w-[420px] md:w-full md:max-w-none"
+          />
         </div>
       </section>
-    </div>
+
+      <section aria-labelledby="home-stack" className="container section">
+        <h2 id="home-stack" className="sr-only">
+          Technologies
+        </h2>
+
+        <Image src={glowLine} alt="" aria-hidden="true" className="w-[100%] h-[70px] mx-auto mt-[-20px] ml-[-50px]" />
+
+        <InfiniteScroller
+          items={PROFILE_HARD_SKILLS}
+          getKey={(item) => item.label}
+          durationMs={36000}
+          gap="1.25rem"
+          ariaLabel="Liste des technologies"
+          renderItem={(item) => (
+            <div className="inline-flex flex-col items-center gap-2 min-w-[100px]">
+              <Image src={item.logo} alt="" aria-hidden="true" className="h-15 w-15 object-contain" />
+              <small>{item.label}</small>
+            </div>
+          )}
+        />
+
+        <Image src={glowLine} alt="" aria-hidden="true" className="w-[100%] h-[70px] mx-auto" />
+      </section>
+    </>
   );
 }

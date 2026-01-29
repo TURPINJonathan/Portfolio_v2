@@ -85,7 +85,7 @@ export default function HeaderLayout() {
 
           <div className="ml-auto flex items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
-              <Button label="Contactez-moi" variant="accent" size="sm" />
+              <Button label="Contactez-moi" href="/contact" variant="accent" size="sm" />
             </div>
 
             <MobileMenuButton ref={burgerButtonRef} open={isMenuOpen} controlsId={navId} onToggle={toggleMenu} />

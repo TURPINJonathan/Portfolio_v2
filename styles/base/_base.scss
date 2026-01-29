@@ -41,6 +41,14 @@ html {
       font-size: var(--font-size-mono-sm);
     }
 
+    .title-font {
+      font-family: var(--title-font);
+    }
+
+    .text-font {
+      font-family: var(--text-font);
+    }
+
     /* Layout helpers */
     .container {
       width: 100%;
