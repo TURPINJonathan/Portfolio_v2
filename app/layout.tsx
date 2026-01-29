@@ -2,6 +2,7 @@ import '@app/globals.scss';
 import '../styles/base/tailwind.css';
 import { IBM_Plex_Sans, JetBrains_Mono, Space_Grotesk } from 'next/font/google';
 import type { Metadata } from 'next';
+import type { Viewport } from 'next';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -27,6 +28,31 @@ export const metadata: Metadata = {
     template: 'Jonathan TURPIN | %s',
   },
   description: 'Portfolio — projets, parcours et contact.',
+  applicationName: 'Jonathan TURPIN | Portfolio',
+  category: 'Portfolio',
+  keywords: [
+    'développeur web',
+    'développeur fullstack',
+    'portfolio',
+    'Next.js',
+    'React',
+    'TypeScript',
+    'SEO',
+    'accessibilité',
+    'performance',
+  ],
+  authors: [{ name: 'Jonathan Turpin' }],
+  creator: 'Jonathan Turpin',
+  publisher: 'Jonathan Turpin',
+  referrer: 'origin-when-cross-origin',
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
   openGraph: {
     title: 'Jonathan TURPIN | Portfolio',
     description: 'Portfolio — projets, parcours et contact.',
@@ -34,17 +60,35 @@ export const metadata: Metadata = {
     siteName: 'Jonathan TURPIN',
     locale: 'fr_FR',
     type: 'website',
+    images: [
+      {
+        url: '/pictures/socials/banner.png',
+        alt: 'Jonathan Turpin — Développeur web fullstack',
+      },
+      {
+        url: '/pictures/socials/business_card.png',
+        alt: 'Jonathan Turpin — Développeur web fullstack',
+      },
+    ],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Jonathan TURPIN | Portfolio',
     description: 'Portfolio — projets, parcours et contact.',
+    images: ['/pictures/socials/banner.png'],
   },
   robots: {
     index: true,
     follow: true,
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#0C0E11',
+  colorScheme: 'dark',
 };
 
 export default function RootLayout({

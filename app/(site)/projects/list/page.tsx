@@ -1,9 +1,10 @@
-import type { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Projets',
   description: 'Liste de projets du portfolio.',
-};
+  canonical: '/projects/list',
+});
 
 export default function ProjectsList() {
   return (

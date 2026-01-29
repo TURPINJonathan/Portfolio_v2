@@ -7,7 +7,7 @@ export default function FooterLayout() {
   const month = getMonth('string', true, undefined, { length: 'long' });
   const year = getCurrentYear();
   const currentDate = `${month} ${year}`;
-  const visibleLinks = CONTACT_LINKS.filter((link) => Boolean(link.href));
+  const links = CONTACT_LINKS;
 
   return (
     <footer className="w-full pb-4 text-xs">
@@ -32,19 +32,20 @@ export default function FooterLayout() {
               Me contacter
             </h2>
 
-            {visibleLinks.length > 0 && (
+            {links.length > 0 && (
               <ul
                 className="flex flex-wrap items-center justify-center gap-2 sm:justify-end"
                 aria-label="Liens de contact"
               >
-                {visibleLinks.map((link) => (
+                {links.map((link) => (
                   <li key={link.key}>
                     <Button
                       href={link.href}
                       variant="primary"
                       isOutline
                       size="xs"
-                      ariaLabel={link.label}
+                      disabled={!link.href}
+                      ariaLabel={`${link.label}${link.href ? '' : ' (non configuré)'}`}
                       external={link.isExternal}
                     >
                       <link.Icon

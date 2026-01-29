@@ -35,6 +35,14 @@ export default function MobileNavDrawer({
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const el = dialogRef.current;
+    if (!el) return;
+
+    if (open) el.removeAttribute('inert');
+    else el.setAttribute('inert', '');
+  }, [open]);
+
+  useEffect(() => {
     if (!open) return;
 
     const { body } = document;
@@ -144,8 +152,9 @@ export default function MobileNavDrawer({
       <div
         id={id}
         role="dialog"
-        aria-modal="true"
+        aria-modal={open ? 'true' : undefined}
         aria-label="Menu"
+        aria-hidden={!open}
         ref={dialogRef}
         className={`fixed left-0 right-0 top-0 z-50 mx-auto w-full max-w-[520px] px-4 pt-4 transition-[opacity,transform] duration-200 ease-out ${
           open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
@@ -153,6 +162,7 @@ export default function MobileNavDrawer({
       >
         <div className="rounded-xl border border-white/10 bg-[rgb(12_14_20_/_92%)] p-3 shadow-[0_16px_48px_rgba(0,0,0,0.35)]">
           <nav aria-label="Navigation principale (mobile)" className="flex flex-col gap-3">
+            <Button label="Fermer le menu" variant="primary" isOutline size="sm" onClick={onRequestClose} />
             {links.map((link) => (
               <Button
                 key={link.href}

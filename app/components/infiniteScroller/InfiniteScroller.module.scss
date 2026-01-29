@@ -1,0 +1,52 @@
+.scroller {
+  --scroller-duration: 32000ms;
+  --scroller-gap: 1rem;
+
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+
+  .track {
+    display: flex;
+    width: max-content;
+    animation: scroller var(--scroller-duration) linear infinite;
+  }
+
+  .items {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--scroller-gap);
+    padding-inline: var(--scroller-gap);
+  }
+
+  .item {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &:hover .track,
+  &:focus-within .track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes scroller {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroller {
+    mask-image: none;
+
+    .track {
+      animation: none;
+      transform: none;
+    }
+  }
+}
