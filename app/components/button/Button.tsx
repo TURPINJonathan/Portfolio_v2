@@ -48,6 +48,7 @@ export default function ButtonComponent({
 }: ButtonProps) {
   const isExternal = external ?? (typeof href === 'string' && /^(https?:)?\/\//.test(href));
   const isLink = typeof href === 'string' && href.length > 0;
+  const isHashOnlyLink = typeof href === 'string' && href.startsWith('#') && href.length > 1;
 
   const classes = [
     'tap-target',
@@ -80,6 +81,33 @@ export default function ButtonComponent({
     }
 
     const ariaCurrentProps = ariaCurrent ? { 'aria-current': ariaCurrent } : undefined;
+
+    if (isHashOnlyLink) {
+      const handleHashClick: MouseEventHandler<HTMLAnchorElement> = (event) => {
+        onClick?.(event);
+        if (event.defaultPrevented) return;
+
+        const targetId = href.slice(1);
+        const targetElement = document.getElementById(targetId);
+        if (!targetElement) return;
+
+        event.preventDefault();
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.pushState(null, '', href);
+      };
+
+      return (
+        <a
+          href={href}
+          className={classes}
+          aria-label={ariaLabel ?? label}
+          {...ariaCurrentProps}
+          onClick={handleHashClick}
+        >
+          {content}
+        </a>
+      );
+    }
 
     if (isExternal) {
       return (

@@ -68,7 +68,7 @@ export default function FooterLayout() {
               Mentions légales
             </h2>
             <nav aria-label="Liens légaux">
-              <Link href="/mentions-legales" className="font-medium focus-visible:underline focus-visible:outline-none">
+              <Link href="/legal-notices" className="font-medium focus-visible:underline focus-visible:outline-none">
                 Mentions légales
               </Link>
             </nav>

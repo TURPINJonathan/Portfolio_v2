@@ -14,6 +14,7 @@
       "@layout/*": ["./app/(layout)/*"],
       "@pictures/*": ["./assets/pictures/*"],
       "@logos": ["./assets/logos/index.ts"],
+      "@icons": ["./assets/icons/index.ts"],
       "@utils": ["./lib/utils/index.ts"],
       "@components": ["./app/components/index.ts"],
       "@types": ["./types/index.ts"],
