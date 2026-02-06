@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import stakWorkHard from '@pictures/Stak_work_hard.png';
 import glowLine from '@pictures/glow_line.png';
-import { Button, InfiniteScroller, JsonLd } from '@components';
+import { Button, InfiniteScroller, JsonLd, TechBadge } from '@components';
 import { createPageMetadata } from '@/lib/seo/metadata';
 import { getHomeJsonLd } from '@/lib/seo/structuredData';
 import { PROFILE_HARD_SKILLS } from '@constants';
@@ -40,7 +40,7 @@ export default function Home() {
 
           <div className="flex flex-row items-center justify-evenly gap-2 sm:gap-8 mx-auto flex-wrap">
             <Button href="/projects/list" variant="accent" className="!min-w-[170px] justify-center">
-              Voir mes projets
+              Voir les projets
             </Button>
             <Button href="/contact" isOutline variant="primary" className="!min-w-[180px] justify-center">
               Me contacter
@@ -71,12 +71,7 @@ export default function Home() {
           durationMs={36000}
           gap="1.25rem"
           ariaLabel="Liste des technologies"
-          renderItem={(item) => (
-            <div className="inline-flex flex-col items-center gap-2 min-w-[100px]">
-              <Image src={item.logo} alt="" aria-hidden="true" className="h-15 w-15 object-contain" />
-              <small>{item.label}</small>
-            </div>
-          )}
+          renderItem={(item) => <TechBadge label={item.label} icon={item.logo} key={item.label} />}
         />
 
         <Image src={glowLine} alt="" aria-hidden="true" className="w-[100%] h-[70px] mx-auto" />

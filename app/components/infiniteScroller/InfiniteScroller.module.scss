@@ -1,3 +1,5 @@
+@use '../keyframes';
+
 .scroller {
   --scroller-duration: 32000ms;
   --scroller-gap: 1rem;
@@ -27,16 +29,6 @@
   &:hover .track,
   &:focus-within .track {
     animation-play-state: paused;
-  }
-}
-
-@keyframes scroller {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
   }
 }
 

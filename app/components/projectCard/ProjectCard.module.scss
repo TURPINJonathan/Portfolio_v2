@@ -1,0 +1,448 @@
+@use '../keyframes';
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(1200px 420px at 10% -30%, rgba(124, 58, 237, 0.32), transparent 55%),
+    radial-gradient(900px 520px at 110% 120%, rgba(34, 211, 238, 0.22), transparent 55%),
+    linear-gradient(180deg, rgba(12, 14, 17, 0.92), rgba(10, 11, 14, 0.92));
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  animation: cardEnter 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--enter-delay, 0s);
+  transition:
+    border-color 260ms ease,
+    box-shadow 320ms ease,
+    background-color 260ms ease;
+
+  cursor: pointer;
+  outline: none;
+
+  &:focus-within {
+    box-shadow:
+      0 26px 70px rgba(0, 0, 0, 0.62),
+      0 0 0 2px rgba(34, 211, 238, 0.22),
+      0 0 0 6px rgba(124, 58, 237, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  &::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.35), rgba(34, 211, 238, 0.25));
+    opacity: 0;
+    transition: opacity 320ms ease;
+  }
+
+  &::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      radial-gradient(450px 200px at var(--mx, 30%) var(--my, 15%), rgba(255, 255, 255, 0.14), transparent 45%),
+      linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.35));
+    opacity: 0.9;
+  }
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 26px 70px rgba(0, 0, 0, 0.62),
+      0 0 0 1px rgba(124, 58, 237, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    &::before {
+      opacity: 1;
+    }
+
+    .bannerImage {
+      transform: scale(1.045);
+      filter: grayscale(0) saturate(1.15) contrast(1.06) brightness(1);
+    }
+
+    .bannerOverlay::before {
+      opacity: 1;
+      transform: translateX(165%) skewX(-12deg) scaleY(1.06);
+    }
+
+    .cta {
+      opacity: 1;
+      transform: translateY(0);
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45);
+    }
+  }
+}
+
+.chrome {
+  pointer-events: none;
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background:
+    radial-gradient(600px 220px at 25% 5%, rgba(124, 58, 237, 0.35), transparent 45%),
+    radial-gradient(700px 280px at 85% 95%, rgba(34, 211, 238, 0.28), transparent 50%);
+  opacity: 0.65;
+  filter: blur(10px);
+}
+
+.banner {
+  position: relative;
+  min-height: 260px;
+
+  @media (min-width: 700px) {
+    min-height: 280px;
+  }
+}
+
+.stretchedLink {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.stretchedLink:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: calc(var(--focus-ring-offset) * -1);
+}
+
+.bannerImage {
+  object-fit: cover;
+  transform: scale(1.02);
+  filter: grayscale(1) saturate(0.75) contrast(1.08) brightness(0.92);
+  transition:
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.55)),
+    radial-gradient(900px 220px at 20% 10%, rgba(124, 58, 237, 0.22), transparent 55%),
+    radial-gradient(700px 240px at 85% 20%, rgba(34, 211, 238, 0.18), transparent 55%);
+}
+
+.bannerOverlay::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 24px;
+
+  background:
+    radial-gradient(900px 260px at 20% 20%, rgba(124, 58, 237, 0.78), transparent 62%),
+    radial-gradient(850px 240px at 80% 40%, rgba(34, 211, 238, 0.68), transparent 62%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.14)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 0px,
+      rgba(255, 255, 255, 0.08) 1px,
+      rgba(0, 0, 0, 0) 2px,
+      rgba(0, 0, 0, 0) 10px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12) 0px,
+      rgba(255, 255, 255, 0.12) 1px,
+      rgba(0, 0, 0, 0) 2px,
+      rgba(0, 0, 0, 0) 6px
+    );
+
+  mix-blend-mode: screen;
+  filter: blur(0.45px) saturate(1.45) contrast(1.18);
+  opacity: 0;
+  transform: translateX(-135%) skewX(-12deg) scaleY(1.06);
+
+  transition:
+    opacity 180ms ease,
+    transform 780ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bannerContent {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.05rem 1.05rem 1.1rem;
+}
+
+.logoLayer {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  isolation: isolate;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 220ms ease,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.logoLayer::before {
+  content: '';
+  position: absolute;
+  inset: 22% 14%;
+  border-radius: 999px;
+  background:
+    radial-gradient(220px 180px at 25% 20%, rgba(124, 58, 237, 0.26), transparent 62%),
+    radial-gradient(240px 200px at 75% 80%, rgba(34, 211, 238, 0.2), transparent 64%);
+  opacity: 0.18;
+  filter: blur(18px);
+  mix-blend-mode: screen;
+  transition: opacity 220ms ease;
+}
+
+.logoImage {
+  position: relative;
+  z-index: 1;
+  width: clamp(92px, 26%, 160px);
+  height: auto;
+  filter: drop-shadow(0 16px 42px rgba(0, 0, 0, 0.5)) saturate(1.04);
+  opacity: 0.22;
+}
+
+.text {
+  max-width: 64ch;
+}
+
+.card:focus-within .bannerOverlay::before {
+  opacity: 1;
+  transform: translateX(165%) skewX(-12deg) scaleY(1.06);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+.overview {
+  margin: 0.45rem 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+  font-size: 0.95rem;
+  font-style: italic;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.actions {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: flex-start;
+}
+
+.cta {
+  flex: 0 0 auto;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+  transform: translateY(1px);
+  opacity: 0.92;
+  transition:
+    opacity 220ms ease,
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .logoLayer {
+    display: flex;
+  }
+
+  .logoImage {
+    transform-origin: center;
+    will-change: transform, opacity;
+    animation: logoBreathe 3.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+
+  .logoLayer::before {
+    animation: logoGlowBreathe 3.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+
+  .title {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 220ms ease 0ms,
+      transform 260ms cubic-bezier(0.22, 1, 0.36, 1) 0ms;
+  }
+
+  .overview {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 220ms ease 0ms,
+      transform 260ms cubic-bezier(0.22, 1, 0.36, 1) 0ms,
+      max-height 360ms cubic-bezier(0.22, 1, 0.36, 1) 0ms,
+      margin-top 260ms cubic-bezier(0.22, 1, 0.36, 1) 0ms;
+  }
+
+  .actions {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(10px);
+    transition:
+      opacity 220ms ease 0ms,
+      transform 260ms cubic-bezier(0.22, 1, 0.36, 1) 0ms,
+      max-height 360ms cubic-bezier(0.22, 1, 0.36, 1) 0ms;
+  }
+
+  .cta {
+    opacity: 0;
+    transform: translateY(10px);
+    box-shadow: none;
+  }
+
+  .card:hover,
+  .card:focus-within {
+    .logoLayer {
+      opacity: 0;
+      transform: translateY(8px) scale(0.985);
+    }
+
+    .title {
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 220ms ease 20ms,
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1) 20ms;
+    }
+
+    .overview {
+      max-height: 6.25em;
+      opacity: 1;
+      margin-top: 0.45rem;
+      transform: translateY(0);
+      transition:
+        opacity 220ms ease 40ms,
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1) 40ms,
+        max-height 360ms cubic-bezier(0.22, 1, 0.36, 1) 40ms,
+        margin-top 260ms cubic-bezier(0.22, 1, 0.36, 1) 40ms;
+    }
+
+    .actions {
+      max-height: 4.5rem;
+      opacity: 1;
+      transform: translateY(0);
+      transition:
+        opacity 220ms ease 120ms,
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1) 120ms,
+        max-height 360ms cubic-bezier(0.22, 1, 0.36, 1) 120ms;
+    }
+
+    .cta {
+      opacity: 1;
+      transform: translateY(0);
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logoLayer {
+    display: none;
+    transition: none;
+    transform: none;
+    opacity: 0;
+  }
+
+  .title {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .card {
+    animation: none;
+    will-change: auto;
+  }
+
+  .overview {
+    max-height: none;
+    opacity: 1;
+    margin-top: 0.45rem;
+    transform: none;
+  }
+
+  .actions {
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    transform: none;
+  }
+
+  .bannerImage {
+    transition: none;
+    transform: none;
+  }
+
+  .card:hover .bannerImage {
+    transform: none;
+  }
+
+  .bannerOverlay::before {
+    display: none;
+  }
+
+  .card::before {
+    transition: none;
+  }
+
+  .cta {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 700px), (hover: none) and (pointer: coarse) {
+  .card {
+    animation: none;
+    will-change: auto;
+  }
+
+  .logoLayer {
+    display: none;
+  }
+
+  .bannerImage {
+    transition: none;
+    transform: none;
+    filter: none;
+  }
+
+  .bannerOverlay::before {
+    display: none;
+  }
+
+  .chrome {
+    opacity: 0.4;
+    filter: blur(6px);
+  }
+}

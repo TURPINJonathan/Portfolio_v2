@@ -1,0 +1,82 @@
+@keyframes auroraMove {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(2%, 1%, 0) scale(1.03);
+  }
+
+  100% {
+    transform: translate3d(-1%, 2%, 0) scale(1.01);
+  }
+}
+
+@keyframes shineMove {
+  to {
+    transform: translateX(35%);
+  }
+}
+
+@keyframes logoBreathe {
+  0%,
+  100% {
+    opacity: 0.14;
+    transform: translateY(0) scale(0.996);
+  }
+
+  50% {
+    opacity: 0.56;
+    transform: translateY(-0.75px) scale(1);
+  }
+}
+
+@keyframes logoGlowBreathe {
+  0%,
+  100% {
+    opacity: 0.04;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes bannerSweep {
+  0% {
+    opacity: 1;
+    transform: translateX(-135%) skewX(-12deg) scaleY(1.06);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateX(120%) skewX(-12deg) scaleY(1.06);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(165%) skewX(-12deg) scaleY(1.06);
+  }
+}
+
+@keyframes cardEnter {
+  0% {
+    opacity: 0;
+    transform: translateZ(0) translateY(18px) scale(0.985);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateZ(0) translateY(0) scale(1);
+  }
+}
+
+@keyframes scroller {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
