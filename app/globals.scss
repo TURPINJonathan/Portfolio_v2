@@ -10,3 +10,13 @@ body {
     scroll-margin-top: 96px;
   }
 }
+
+.projectDetailContainer {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 11, 14, 0.38);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}

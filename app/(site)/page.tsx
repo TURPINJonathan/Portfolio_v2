@@ -71,7 +71,7 @@ export default function Home() {
           durationMs={36000}
           gap="1.25rem"
           ariaLabel="Liste des technologies"
-          renderItem={(item) => <TechBadge label={item.label} icon={item.logo} key={item.label} />}
+          renderItem={(item) => item.isOnMain && <TechBadge label={item.label} icon={item.logo} key={item.label} />}
         />
 
         <Image src={glowLine} alt="" aria-hidden="true" className="w-[100%] h-[70px] mx-auto" />

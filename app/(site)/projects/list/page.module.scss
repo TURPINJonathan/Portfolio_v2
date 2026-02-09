@@ -20,3 +20,13 @@
     gap: 1.55rem;
   }
 }
+
+.item {
+  min-width: 0;
+}
+
+.itemFeatured {
+  @media (min-width: 700px) {
+    grid-column: 1 / -1;
+  }
+}

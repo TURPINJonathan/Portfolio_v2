@@ -143,7 +143,7 @@ export default function MobileNavDrawer({
     <div className="md:hidden">
       <div
         className={`fixed inset-0 z-40 bg-black/45 backdrop-blur-[2px] transition-opacity duration-200 ease-out ${
-          open ? 'opacity-100' : 'opacity-0'
+          open ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden="true"
         onClick={onRequestClose}
@@ -157,7 +157,7 @@ export default function MobileNavDrawer({
         aria-hidden={!open}
         ref={dialogRef}
         className={`fixed left-0 right-0 top-0 z-50 mx-auto w-full max-w-[520px] px-4 pt-4 transition-[opacity,transform] duration-200 ease-out ${
-          open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
+          open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
         }`}
       >
         <div className="rounded-xl border border-white/10 bg-[rgb(12_14_20_/_92%)] p-3 shadow-[0_16px_48px_rgba(0,0,0,0.35)]">

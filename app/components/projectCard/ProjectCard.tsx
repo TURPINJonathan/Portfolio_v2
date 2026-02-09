@@ -12,7 +12,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, enterDelay = 0, priorityImage = false }: ProjectCardProps) {
-  const href = `/projects/${project.url}`;
+  const href = `/projects/${project.slug}`;
   const titleId = `project-title-${project.id}`;
   const overviewId = `project-overview-${project.id}`;
   const style = { ['--enter-delay']: `${enterDelay}s` } as CSSProperties;
@@ -34,7 +34,7 @@ export default function ProjectCard({ project, enterDelay = 0, priorityImage = f
         <div className={styles.bannerContent}>
           {project.logo ? (
             <div className={styles.logoLayer} aria-hidden="true">
-              <Image src={project.logo} alt="" className={styles.logoImage} />
+              <Image src={project.logo} alt="" aria-hidden={true} className={styles.logoImage} />
             </div>
           ) : null}
           <div className={styles.text}>
