@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 import { LEGAL } from '@constants';
 import { createPageMetadata } from '@/lib/seo/metadata';
 import { Button, GradientText } from '@components';
-import { Dot } from '@icons';
+import { Dot, ToTopScreen } from '@icons';
 
 export const metadata = createPageMetadata({
   title: 'Politique de confidentialité',
@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
         </h1>
 
         <p className="mt-3 text-center text-white/80 leading-relaxed max-w-[85ch] mx-auto">
-          La présente politique de confidentialité décrit la manière dont <strong>{LEGAL.publisherName}</strong>
+          La présente politique de confidentialité décrit la manière dont <strong>{LEGAL.publisherName}</strong>&nbsp;
           collecte et traite les données personnelles des utilisateurs du site <strong>{LEGAL.siteName}</strong>.
         </p>
       </header>
@@ -261,7 +261,9 @@ export default function PrivacyPolicyPage() {
           href="#top"
           variant="default"
           appearance="bare"
+          picture={ToTopScreen}
           size="md"
+          contentSize="h-50 w-50 lg:h-40 lg:w-40"
           label="Retour en haut de la page"
           ariaLabel="Retour en haut de la page"
         />
