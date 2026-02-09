@@ -65,11 +65,15 @@ export default function FooterLayout() {
             aria-labelledby="footer-legal"
           >
             <h2 id="footer-legal" className="sr-only">
-              Mentions légales
+              Mentions légales&nbsp;&middot;&nbsp;Politique de confidentialité
             </h2>
             <nav aria-label="Liens légaux">
               <Link href="/legal-notices" className="font-medium focus-visible:underline focus-visible:outline-none">
                 Mentions légales
+              </Link>
+              &nbsp;&middot;&nbsp;
+              <Link href="/privacy-policy" className="font-medium focus-visible:underline focus-visible:outline-none">
+                Politique de confidentialité
               </Link>
             </nav>
             <span>&copy; Janvier 2026 &middot; {currentDate}</span>

@@ -4,6 +4,8 @@ import { IBM_Plex_Sans, JetBrains_Mono, Space_Grotesk } from 'next/font/google';
 import type { Metadata } from 'next';
 import type { Viewport } from 'next';
 
+import { getBaseUrl } from '@/lib/siteUrl';
+
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--title-font',
@@ -81,7 +83,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+  metadataBase: new URL(getBaseUrl()),
 };
 
 export const viewport: Viewport = {

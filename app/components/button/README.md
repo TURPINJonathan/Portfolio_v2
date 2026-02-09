@@ -48,7 +48,7 @@ import type { ButtonSize, ButtonVariant } from '@components/index';
 ### CTA interne (Next Link)
 
 ```tsx
-<Button label="Voir mes projets" href="/projects/list" variant="accent" />
+<Button label="Voir les projets" href="/projects/list" variant="accent" />
 ```
 
 ### CTA externe
