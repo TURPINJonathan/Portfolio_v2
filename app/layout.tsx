@@ -3,6 +3,7 @@ import '../styles/base/tailwind.css';
 import { IBM_Plex_Sans, JetBrains_Mono, Space_Grotesk } from 'next/font/google';
 import type { Metadata } from 'next';
 import type { Viewport } from 'next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { getBaseUrl } from '@/lib/siteUrl';
 
@@ -100,7 +101,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${jetBrainsMono.variable}`}>{children}</body>
+      <body className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${jetBrainsMono.variable}`}>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
