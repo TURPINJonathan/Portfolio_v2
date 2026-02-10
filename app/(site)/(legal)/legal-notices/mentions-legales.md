@@ -37,7 +37,7 @@ Toute reproduction, représentation, modification ou adaptation, totale ou parti
 
 ## 6) Données personnelles
 
-Le Site peut collecter des données personnelles via son formulaire de contact (civilité, nom, prénom, entreprise, poste, email, message).
+Le Site peut collecter des données personnelles via son formulaire de contact (Appellation, nom, prénom, entreprise, poste, email, message).
 
 Pour plus d’informations, l’utilisateur est invité à consulter la page **Politique de confidentialité**.
 

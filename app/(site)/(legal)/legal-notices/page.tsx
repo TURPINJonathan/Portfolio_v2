@@ -170,7 +170,7 @@ export default function LegalNoticePage() {
             </a>
           </h2>
           <p className="mt-2">
-            Le Site peut collecter des données personnelles via son formulaire de contact (civilité, nom, prénom,
+            Le Site peut collecter des données personnelles via son formulaire de contact (Appellation, nom, prénom,
             entreprise, poste, email, message).
           </p>
           <p className="mt-2">

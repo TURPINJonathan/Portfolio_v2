@@ -68,7 +68,7 @@ export default function PrivacyPolicyPage() {
           <DotList
             className="mt-2"
             items={[
-              'Civilité',
+              'Appellation',
               'Nom',
               'Prénom',
               'Entreprise',
