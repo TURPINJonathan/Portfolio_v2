@@ -37,7 +37,7 @@ export default function AboutMePage() {
         </header>
 
         <section className="flex flex-wrap gap-4 mt-4">
-          <article className="projectDetailContainer flex flex-col gap-2" aria-labelledby="about">
+          <article className="cardContainer flex flex-col gap-2" aria-labelledby="about">
             <h2 id="about">Qui suis-je ?</h2>
             <p>
               Je suis Jonathan Turpin, développeur fullstack confirmé. Selon le besoin, je peux intervenir sur
@@ -48,10 +48,7 @@ export default function AboutMePage() {
           </article>
 
           <div className="flex flex-wrap gap-4">
-            <article
-              className="projectDetailContainer flex-1 basis-[500px] flex flex-col gap-2"
-              aria-labelledby="expertise"
-            >
+            <article className="cardContainer flex-1 basis-[500px] flex flex-col gap-2" aria-labelledby="expertise">
               <h2 id="expertise">Mon expertise</h2>
 
               <p>Ma stack principale s’articule autour de :</p>
@@ -102,10 +99,7 @@ export default function AboutMePage() {
               </p>
             </article>
 
-            <article
-              className="projectDetailContainer flex-1 basis-[500px] flex flex-col gap-2"
-              aria-labelledby="work-method"
-            >
+            <article className="cardContainer flex-1 basis-[500px] flex flex-col gap-2" aria-labelledby="work-method">
               <h2 id="work-method">Ma façon de travailler</h2>
               <p>J’aborde les projets avec une approche pragmatique, orientée solution et livraison :</p>
               <DotList
@@ -131,7 +125,7 @@ export default function AboutMePage() {
             </article>
           </div>
 
-          <article className="projectDetailContainer flex-1 flex flex-col gap-2" aria-labelledby="contact">
+          <article className="cardContainer flex-1 flex flex-col gap-2" aria-labelledby="contact">
             <h2 id="contact">Contact</h2>
             <p>
               Si vous souhaitez échanger autour d’un poste, d’une mission ou d’un projet, vous pouvez me contacter à

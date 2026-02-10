@@ -34,7 +34,7 @@ export default function LegalNoticePage() {
           </p>
         </header>
 
-        <section className="projectDetailContainer" aria-labelledby="site-publisher">
+        <section className="cardContainer" aria-labelledby="site-publisher">
           <h2 id="site-publisher" className="scroll-mt-24">
             1) Éditeur du site{' '}
             <a
@@ -69,7 +69,7 @@ export default function LegalNoticePage() {
           />
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="publication-director">
+        <section className="cardContainer" aria-labelledby="publication-director">
           <h2 id="publication-director" className="scroll-mt-24">
             2) Directeur de la publication{' '}
             <a
@@ -85,7 +85,7 @@ export default function LegalNoticePage() {
           </p>
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="hosting">
+        <section className="cardContainer" aria-labelledby="hosting">
           <h2 id="hosting" className="scroll-mt-24">
             3) Hébergement{' '}
             <a
@@ -120,7 +120,7 @@ export default function LegalNoticePage() {
           </p>
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="design-development">
+        <section className="cardContainer" aria-labelledby="design-development">
           <h2 id="design-development" className="scroll-mt-24">
             4) Conception / Développement{' '}
             <a
@@ -136,7 +136,7 @@ export default function LegalNoticePage() {
           </p>
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="intellectual-property">
+        <section className="cardContainer" aria-labelledby="intellectual-property">
           <h2 id="intellectual-property" className="scroll-mt-24">
             5) Propriété intellectuelle{' '}
             <a
@@ -158,7 +158,7 @@ export default function LegalNoticePage() {
           </p>
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="personal-data">
+        <section className="cardContainer" aria-labelledby="personal-data">
           <h2 id="personal-data" className="scroll-mt-24">
             6) Données personnelles{' '}
             <a
@@ -182,7 +182,7 @@ export default function LegalNoticePage() {
           </p>
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="cookies">
+        <section className="cardContainer" aria-labelledby="cookies">
           <h2 id="cookies" className="scroll-mt-24">
             7) Cookies{' '}
             <a
@@ -200,7 +200,7 @@ export default function LegalNoticePage() {
           </p>
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="contact">
+        <section className="cardContainer" aria-labelledby="contact">
           <h2 id="contact" className="scroll-mt-24">
             8) Contact{' '}
             <a
@@ -217,7 +217,7 @@ export default function LegalNoticePage() {
           </p>
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="governing-law">
+        <section className="cardContainer" aria-labelledby="governing-law">
           <h2 id="governing-law" className="scroll-mt-24">
             9) Droit applicable{' '}
             <a

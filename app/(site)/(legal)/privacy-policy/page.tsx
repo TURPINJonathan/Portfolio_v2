@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </header>
 
-        <section className="projectDetailContainer" aria-labelledby="data-controller">
+        <section className="cardContainer" aria-labelledby="data-controller">
           <h2 id="data-controller" className="scroll-mt-24">
             1) Responsable du traitement{' '}
             <a
@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="data-collected">
+        <section className="cardContainer" aria-labelledby="data-collected">
           <h2 id="data-collected" className="scroll-mt-24">
             2) Données collectées{' '}
             <a
@@ -79,7 +79,7 @@ export default function PrivacyPolicyPage() {
           />
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="processing-purposes">
+        <section className="cardContainer" aria-labelledby="processing-purposes">
           <h2 id="processing-purposes" className="scroll-mt-24">
             3) Finalités du traitement{' '}
             <a
@@ -100,7 +100,7 @@ export default function PrivacyPolicyPage() {
           />
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="legal-basis">
+        <section className="cardContainer" aria-labelledby="legal-basis">
           <h2 id="legal-basis" className="scroll-mt-24">
             4) Base légale{' '}
             <a
@@ -122,7 +122,7 @@ export default function PrivacyPolicyPage() {
           />
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="recipients">
+        <section className="cardContainer" aria-labelledby="recipients">
           <h2 id="recipients" className="scroll-mt-24">
             5) Destinataires{' '}
             <a
@@ -139,7 +139,7 @@ export default function PrivacyPolicyPage() {
           <p className="mt-2">Elles ne sont ni vendues, ni louées, ni transmises à des tiers.</p>
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="retention-period">
+        <section className="cardContainer" aria-labelledby="retention-period">
           <h2 id="retention-period" className="scroll-mt-24">
             6) Durée de conservation{' '}
             <a
@@ -156,7 +156,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="security">
+        <section className="cardContainer" aria-labelledby="security">
           <h2 id="security" className="scroll-mt-24">
             7) Sécurité{' '}
             <a
@@ -174,7 +174,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="user-rights">
+        <section className="cardContainer" aria-labelledby="user-rights">
           <h2 id="user-rights" className="scroll-mt-24">
             8) Droits des utilisateurs{' '}
             <a
@@ -208,7 +208,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="projectDetailContainer" aria-labelledby="cookies">
+        <section className="cardContainer" aria-labelledby="cookies">
           <h2 id="cookies" className="scroll-mt-24">
             9) Cookies{' '}
             <a

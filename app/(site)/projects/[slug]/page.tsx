@@ -106,7 +106,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
           <p className="text-center italic max-w-[85ch]">{project.overview}</p>
         </header>
 
-        <figure className={styles.projectDetailContainer} aria-label={`Illustration du projet ${project.name}`}>
+        <figure className={styles.cardContainer} aria-label={`Illustration du projet ${project.name}`}>
           <figcaption className="sr-only">Bannière et logo du projet {project.name}</figcaption>
           <Image
             src={project.banner}
@@ -137,7 +137,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
             Technologies utilisées
           </h2>
 
-          <div className="projectDetailContainer basis-[250px] flex-1 min-h-[200px]">
+          <div className="cardContainer basis-[250px] flex-1 min-h-[200px]">
             <ul className="flex h-full flex-wrap items-center justify-center gap-4" aria-label="Technologies">
               {technologyBadges.map((badge) => (
                 <li key={badge.label}>
@@ -154,10 +154,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
           </div>
 
           <div className="flex-2 flex basis-[465px] flex-col gap-4">
-            <section
-              className="projectDetailContainer relative flex-1 overflow-hidden"
-              aria-labelledby="project-context"
-            >
+            <section className="cardContainer relative flex-1 overflow-hidden" aria-labelledby="project-context">
               <div className="relative z-10">
                 <h2 id="project-context">Contexte</h2>
                 <p>{project.details.context}</p>
@@ -172,12 +169,12 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
             </section>
 
             <div className="flex-1 flex-wrap flex gap-4">
-              <section className="projectDetailContainer basis-[400px] flex-3" aria-labelledby="project-objective">
+              <section className="cardContainer basis-[400px] flex-3" aria-labelledby="project-objective">
                 <h2 id="project-objective">Objectif</h2>
                 <p>{project.details.objective}</p>
               </section>
 
-              <div className="projectDetailContainer relative basis-[165px] flex-1 flex justify-center items-center">
+              <div className="cardContainer relative basis-[165px] flex-1 flex justify-center items-center">
                 <div aria-hidden="true">
                   <CircularText
                     text={circularTextLabel}
@@ -219,7 +216,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
         </section>
 
         <section className="flex gap-4" aria-labelledby="project-features">
-          <div className="projectDetailContainer relative overflow-hidden flex-2 min-h-[200px]">
+          <div className="cardContainer relative overflow-hidden flex-2 min-h-[200px]">
             <Image
               src={Feature}
               alt=""
@@ -236,7 +233,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
 
         <section className="flex flex-wrap gap-4" aria-label="Écosystème et qualité">
           <section
-            className="projectDetailContainer relative overflow-hidden basis-[400px] flex-1"
+            className="cardContainer relative overflow-hidden basis-[400px] flex-1"
             aria-labelledby="project-ecosystem"
           >
             <Image
@@ -249,7 +246,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
             <DotList items={project.details.ecosystem} />
           </section>
 
-          <section className="projectDetailContainer basis-[400px] flex-1" aria-labelledby="project-quality">
+          <section className="cardContainer basis-[400px] flex-1" aria-labelledby="project-quality">
             <h2 id="project-quality">Qualité & contraintes</h2>
             <DotList items={project.details.quality} />
           </section>
