@@ -2,13 +2,13 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { Button, CircularText, GradientText, JsonLd, TechBadge } from '@components';
+import { Button, CircularText, DotList, GradientText, JsonLd, TechBadge } from '@components';
 import { PROFILE_HARD_SKILLS, ProjectItem, PROJECTS_LIST } from '@constants';
 import { createPageMetadata } from '@/lib/seo/metadata';
 import { getProjectJsonLd } from '@/lib/seo/structuredData';
 
 import styles from './page.module.scss';
-import { Context, Dot, Ecosystem, Feature, Offline, Target } from '@/assets/icons';
+import { Context, Ecosystem, Feature, Offline, Target } from '@/assets/icons';
 
 interface PageProps {
   params: Promise<{
@@ -91,7 +91,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
       <JsonLd id={`jsonld-project-${project.slug}`} data={structuredData} />
 
       <section className="container section flex flex-col gap-4">
-        <header>
+        <header className="flex flex-col gap-4 justify-center items-center">
           <h1 className={`${styles.projectHeaderTitle} text-center`}>
             <GradientText
               as="span"
@@ -103,7 +103,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
             </GradientText>
           </h1>
 
-          <p className="mt-3 text-center text-white/80 leading-relaxed max-w-[75ch] mx-auto">{project.overview}</p>
+          <p className="text-center italic max-w-[85ch]">{project.overview}</p>
         </header>
 
         <figure className={styles.projectDetailContainer} aria-label={`Illustration du projet ${project.name}`}>
@@ -229,14 +229,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
 
             <div className="flex-1">
               <h2 id="project-features">Fonctionnalités clés</h2>
-              <ul>
-                {project.details.keyFeatures.map((feature) => (
-                  <li key={feature} className="flex flex-nowrap items-start gap-2">
-                    <Image src={Dot} alt="" aria-hidden="true" className="h-5 w-5 mt-1 flex-shrink-0" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <DotList items={project.details.keyFeatures} />
             </div>
           </div>
         </section>
@@ -253,26 +246,12 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
               className="pointer-events-none absolute h-[150%] w-auto bottom-[-45%] left-[-15%] z-0 opacity-15"
             />
             <h2 id="project-ecosystem">Écosystème & intégrations</h2>
-            <ul>
-              {project.details.ecosystem.map((item) => (
-                <li key={item} className="flex flex-nowrap items-start gap-2">
-                  <Image src={Dot} alt="" aria-hidden="true" className="h-5 w-5 mt-1 flex-shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+            <DotList items={project.details.ecosystem} />
           </section>
 
           <section className="projectDetailContainer basis-[400px] flex-1" aria-labelledby="project-quality">
             <h2 id="project-quality">Qualité & contraintes</h2>
-            <ul>
-              {project.details.quality.map((quality) => (
-                <li key={quality} className="flex flex-nowrap items-start gap-2">
-                  <Image src={Dot} alt="" aria-hidden="true" className="h-5 w-5 mt-1 flex-shrink-0" />
-                  <span>{quality}</span>
-                </li>
-              ))}
-            </ul>
+            <DotList items={project.details.quality} />
           </section>
         </section>
 

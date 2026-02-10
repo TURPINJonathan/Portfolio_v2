@@ -22,21 +22,23 @@ export default function Home() {
 
       <section aria-labelledby="home-title" className="container section relative overflow-hidden">
         <div className="flex flex-col items-start gap-2 md:max-w-[60%] md:gap-10">
-          <h1 id="home-title" className="leading-tight">
-            <span className="block text-xl sm:text-2xl md:text-3xl font-bold">Jonathan Turpin</span>
-            <span className="block mt-1 text-lg sm:text-xl md:text-2xl italic font-medium">
-              Développeur web fullstack
-            </span>
-          </h1>
+          <header>
+            <h1 id="home-title" className="leading-tight">
+              <span className="block text-xl sm:text-2xl md:text-3xl font-bold">Jonathan Turpin</span>
+              <span className="block mt-1 text-lg sm:text-xl md:text-2xl italic font-medium">
+                Développeur web fullstack
+              </span>
+            </h1>
 
-          <p className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight title-font">
-            Je conçois et développe des applications solides, pensées pour durer.
-          </p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight title-font">
+              Je conçois et développe des applications solides, pensées pour durer.
+            </p>
 
-          <p className="leading-relaxed">
-            Développeur fullstack depuis plusieurs années, j&apos;accompagne entreprises et startups dans la conception
-            d&apos;applications web et mobiles performantes et maintenables.
-          </p>
+            <p className="leading-relaxed">
+              Développeur fullstack depuis plusieurs années, j&apos;accompagne entreprises et startups dans la
+              conception d&apos;applications web et mobiles performantes et maintenables.
+            </p>
+          </header>
 
           <div className="flex flex-row items-center justify-evenly gap-2 sm:gap-8 mx-auto flex-wrap">
             <Button href="/projects/list" variant="accent" className="!min-w-[170px] justify-center">
