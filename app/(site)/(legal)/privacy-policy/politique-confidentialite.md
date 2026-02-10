@@ -11,7 +11,7 @@ Contact : **{{DATA_CONTROLLER_EMAIL}}**
 
 Lorsque l’utilisateur utilise le formulaire de contact, les données suivantes peuvent être collectées :
 
-- Civilité
+- Appellation
 - Nom
 - Prénom
 - Entreprise
