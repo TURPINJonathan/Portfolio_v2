@@ -21,18 +21,20 @@ export default function ProjectsList() {
       <JsonLd id="jsonld-projects-list" data={structuredData} />
 
       <section className="container section">
-        <h1 className="text-center">
-          <GradientText
-            as="span"
-            colors={['#484080', '#7462a8', '#f8c6fb', '#7462a8', '#484080']}
-            animationSpeed={8}
-            showBorder={false}
-          >
-            Les projets
-          </GradientText>
-        </h1>
+        <header>
+          <h1 className="text-center">
+            <GradientText
+              as="span"
+              colors={['#484080', '#7462a8', '#f8c6fb', '#7462a8', '#484080']}
+              animationSpeed={8}
+              showBorder={false}
+            >
+              Les projets
+            </GradientText>
+          </h1>
 
-        <p className="leading-relaxed italic text-center">Quelques projets sur lesquels j’ai pu travailler.</p>
+          <p className="leading-relaxed italic text-center">Quelques projets sur lesquels j’ai pu travailler.</p>
+        </header>
 
         <ul className={styles.grid} aria-label="Liste des projets">
           {PROJECTS_LIST.map((project, index) => (

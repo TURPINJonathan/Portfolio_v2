@@ -7,3 +7,4 @@ export { default as GradientText } from './gradientText/GradientText';
 export { default as TechBadge } from './techBadge/TechBadge';
 export { default as StarBorder } from './starBorder/StarBorder';
 export { default as CircularText } from './circularText/CircularText';
+export { default as DotList } from './dotList/DotList';

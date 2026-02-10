@@ -2,13 +2,13 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { Button, CircularText, GradientText, JsonLd, TechBadge } from '@components';
+import { Button, CircularText, DotList, GradientText, JsonLd, TechBadge } from '@components';
 import { PROFILE_HARD_SKILLS, ProjectItem, PROJECTS_LIST } from '@constants';
 import { createPageMetadata } from '@/lib/seo/metadata';
 import { getProjectJsonLd } from '@/lib/seo/structuredData';
 
 import styles from './page.module.scss';
-import { Context, Dot, Ecosystem, Feature, Offline, Target } from '@/assets/icons';
+import { Context, Ecosystem, Feature, Offline, Target } from '@/assets/icons';
 
 interface PageProps {
   params: Promise<{
@@ -91,7 +91,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
       <JsonLd id={`jsonld-project-${project.slug}`} data={structuredData} />
 
       <section className="container section flex flex-col gap-4">
-        <header>
+        <header className="flex flex-col gap-4 justify-center items-center">
           <h1 className={`${styles.projectHeaderTitle} text-center`}>
             <GradientText
               as="span"
@@ -103,10 +103,10 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
             </GradientText>
           </h1>
 
-          <p className="mt-3 text-center text-white/80 leading-relaxed max-w-[75ch] mx-auto">{project.overview}</p>
+          <p className="text-center italic max-w-[85ch]">{project.overview}</p>
         </header>
 
-        <figure className={styles.projectDetailContainer} aria-label={`Illustration du projet ${project.name}`}>
+        <figure className={styles.cardContainer} aria-label={`Illustration du projet ${project.name}`}>
           <figcaption className="sr-only">Bannière et logo du projet {project.name}</figcaption>
           <Image
             src={project.banner}
@@ -137,7 +137,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
             Technologies utilisées
           </h2>
 
-          <div className="projectDetailContainer basis-[250px] flex-1 min-h-[200px]">
+          <div className="cardContainer basis-[250px] flex-1 min-h-[200px]">
             <ul className="flex h-full flex-wrap items-center justify-center gap-4" aria-label="Technologies">
               {technologyBadges.map((badge) => (
                 <li key={badge.label}>
@@ -154,10 +154,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
           </div>
 
           <div className="flex-2 flex basis-[465px] flex-col gap-4">
-            <section
-              className="projectDetailContainer relative flex-1 overflow-hidden"
-              aria-labelledby="project-context"
-            >
+            <section className="cardContainer relative flex-1 overflow-hidden" aria-labelledby="project-context">
               <div className="relative z-10">
                 <h2 id="project-context">Contexte</h2>
                 <p>{project.details.context}</p>
@@ -172,12 +169,12 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
             </section>
 
             <div className="flex-1 flex-wrap flex gap-4">
-              <section className="projectDetailContainer basis-[400px] flex-3" aria-labelledby="project-objective">
+              <section className="cardContainer basis-[400px] flex-3" aria-labelledby="project-objective">
                 <h2 id="project-objective">Objectif</h2>
                 <p>{project.details.objective}</p>
               </section>
 
-              <div className="projectDetailContainer relative basis-[165px] flex-1 flex justify-center items-center">
+              <div className="cardContainer relative basis-[165px] flex-1 flex justify-center items-center">
                 <div aria-hidden="true">
                   <CircularText
                     text={circularTextLabel}
@@ -219,7 +216,7 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
         </section>
 
         <section className="flex gap-4" aria-labelledby="project-features">
-          <div className="projectDetailContainer relative overflow-hidden flex-2 min-h-[200px]">
+          <div className="cardContainer relative overflow-hidden flex-2 min-h-[200px]">
             <Image
               src={Feature}
               alt=""
@@ -229,21 +226,14 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
 
             <div className="flex-1">
               <h2 id="project-features">Fonctionnalités clés</h2>
-              <ul>
-                {project.details.keyFeatures.map((feature) => (
-                  <li key={feature} className="flex flex-nowrap items-start gap-2">
-                    <Image src={Dot} alt="" aria-hidden="true" className="h-5 w-5 mt-1 flex-shrink-0" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <DotList items={project.details.keyFeatures} />
             </div>
           </div>
         </section>
 
         <section className="flex flex-wrap gap-4" aria-label="Écosystème et qualité">
           <section
-            className="projectDetailContainer relative overflow-hidden basis-[400px] flex-1"
+            className="cardContainer relative overflow-hidden basis-[400px] flex-1"
             aria-labelledby="project-ecosystem"
           >
             <Image
@@ -253,26 +243,12 @@ export default async function ProjectDetailsPage({ params }: PageProps) {
               className="pointer-events-none absolute h-[150%] w-auto bottom-[-45%] left-[-15%] z-0 opacity-15"
             />
             <h2 id="project-ecosystem">Écosystème & intégrations</h2>
-            <ul>
-              {project.details.ecosystem.map((item) => (
-                <li key={item} className="flex flex-nowrap items-start gap-2">
-                  <Image src={Dot} alt="" aria-hidden="true" className="h-5 w-5 mt-1 flex-shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+            <DotList items={project.details.ecosystem} />
           </section>
 
-          <section className="projectDetailContainer basis-[400px] flex-1" aria-labelledby="project-quality">
+          <section className="cardContainer basis-[400px] flex-1" aria-labelledby="project-quality">
             <h2 id="project-quality">Qualité & contraintes</h2>
-            <ul>
-              {project.details.quality.map((quality) => (
-                <li key={quality} className="flex flex-nowrap items-start gap-2">
-                  <Image src={Dot} alt="" aria-hidden="true" className="h-5 w-5 mt-1 flex-shrink-0" />
-                  <span>{quality}</span>
-                </li>
-              ))}
-            </ul>
+            <DotList items={project.details.quality} />
           </section>
         </section>
 
