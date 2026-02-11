@@ -6,6 +6,7 @@ import type { Viewport } from 'next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { getBaseUrl } from '@/lib/siteUrl';
+import ToasterProvider from './components/ToasterProvider';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -103,6 +104,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${jetBrainsMono.variable}`}>
         {children}
+        <ToasterProvider />
         <SpeedInsights />
       </body>
     </html>

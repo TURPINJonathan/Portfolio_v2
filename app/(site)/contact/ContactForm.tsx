@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, useMemo, useState } from 'react';
+import toast from 'react-hot-toast';
 
 import { Button } from '@components';
 
@@ -45,7 +46,6 @@ export default function ContactForm({ className }: IContactFormProps) {
   const [website, setWebsite] = useState(''); // honeypot
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
 
   function resetForm() {
@@ -99,10 +99,12 @@ export default function ContactForm({ className }: IContactFormProps) {
     const nextErrors = validateClient();
     if (Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors);
+      toast.error('Veuillez vérifier les champs du formulaire.');
       return;
     }
 
     setIsSubmitting(true);
+    const toastId = toast.loading('Envoi du message…');
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -129,55 +131,39 @@ export default function ContactForm({ className }: IContactFormProps) {
 
         if (data?.fieldErrors) {
           setErrors({ ...data.fieldErrors, form: 'Certains champs sont invalides.' });
+          toast.error('Certains champs sont invalides.', { id: toastId });
         } else {
           const defaultMessage =
             response.status === 429
               ? 'Trop de tentatives. Merci d’attendre quelques minutes puis de réessayer.'
               : 'Impossible d’envoyer le message. Réessayez plus tard.';
-          setErrors({ form: data?.message ?? defaultMessage });
+          const message = data?.message ?? defaultMessage;
+          setErrors({ form: message });
+          toast.error(message, { id: toastId });
         }
         return;
       }
 
+      const emailTrimmed = email.trim();
       resetForm();
-      setIsSuccess(true);
+      setErrors({});
+      toast.success(
+        <span className="flex flex-col">
+          <span>Message envoyé. Un mail de confirmation a été envoyé à l’adresse:</span>
+          <span className="font-medium">{emailTrimmed}.</span>
+        </span>,
+        { id: toastId },
+      );
     } catch {
-      setErrors({ form: 'Erreur réseau. Vérifiez votre connexion et réessayez.' });
+      const message = 'Erreur réseau. Vérifiez votre connexion et réessayez.';
+      setErrors({ form: message });
+      toast.error(message, { id: toastId });
     } finally {
       setIsSubmitting(false);
     }
   }
 
   const containerClassName = className ? `cardContainer ${className}` : 'cardContainer';
-
-  if (isSuccess) {
-    return (
-      <section className={containerClassName} aria-live="polite">
-        <h2 className="title-font text-xl sm:text-2xl font-semibold">Message envoyé</h2>
-        <p className="mt-2 leading-relaxed">
-          Merci ! Nous vous répondrons dans les plus brefs délais. Si c’est urgent, vous pouvez aussi me contacter via
-          LinkedIn.
-        </p>
-
-        <div className="mt-5 flex flex-wrap gap-3">
-          <Button href="/" variant="primary" isOutline className="justify-center">
-            Retour à l’accueil
-          </Button>
-          <Button
-            variant="accent"
-            className="justify-center"
-            onClick={() => {
-              setIsSuccess(false);
-              setErrors({});
-              resetForm();
-            }}
-          >
-            Envoyer un autre message
-          </Button>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className={containerClassName} aria-labelledby="contact-form-title">
@@ -204,7 +190,7 @@ export default function ContactForm({ className }: IContactFormProps) {
               className="mt-1 w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 pr-10 truncate"
               aria-invalid={Boolean(errors.civility)}
             >
-              <option value="non_specifiee">---</option>
+              <option value="non_specifiee"></option>
               <option value="madame">Madame</option>
               <option value="monsieur">Monsieur</option>
               <option value="autre">Ne souhaite pas préciser</option>
@@ -371,6 +357,7 @@ export default function ContactForm({ className }: IContactFormProps) {
             onClick={() => {
               resetForm();
               setErrors({});
+              toast.dismiss();
             }}
             className="!min-w-[200px]"
           >
