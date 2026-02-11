@@ -1,27 +1,10 @@
 'use client';
 
-import type { RefObject } from 'react';
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Button } from '@components';
-import { UiIntent } from '@types';
-
-export interface MobileNavLink {
-  label: string;
-  href: string;
-  variant: UiIntent;
-  isOutline?: boolean;
-  disabled?: boolean;
-}
-
-export interface MobileNavDrawerProps {
-  id: string;
-  open: boolean;
-  mounted: boolean;
-  links: MobileNavLink[];
-  pathname: string;
-  triggerRef: RefObject<HTMLButtonElement | null>;
-  onRequestClose: () => void;
-}
+import type { MobileNavDrawerProps, MobileNavLink } from '@types';
+import { X } from 'lucide-react';
 
 export default function MobileNavDrawer({
   id,
@@ -33,6 +16,9 @@ export default function MobileNavDrawer({
   onRequestClose,
 }: MobileNavDrawerProps) {
   const dialogRef = useRef<HTMLDivElement | null>(null);
+
+  const contactLink = links.find((l) => l.href === '/contact') ?? null;
+  const mainLinks: MobileNavLink[] = links.filter((l) => l.href !== '/contact');
 
   useEffect(() => {
     const el = dialogRef.current;
@@ -139,11 +125,13 @@ export default function MobileNavDrawer({
 
   if (!mounted) return null;
 
-  return (
-    <div className="md:hidden">
+  const drawerStateClass = open ? 'is-open' : 'is-closing';
+
+  const sheet = (
+    <div className="mobile-nav-drawer md:hidden">
       <div
-        className={`fixed inset-0 z-40 bg-black/45 backdrop-blur-[2px] transition-opacity duration-200 ease-out ${
-          open ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        className={`mobile-nav-drawer__overlay ${drawerStateClass} fixed inset-0 z-40 bg-black/45 backdrop-blur-[2px] ${
+          open ? '' : 'pointer-events-none'
         }`}
         aria-hidden="true"
         onClick={onRequestClose}
@@ -156,14 +144,24 @@ export default function MobileNavDrawer({
         aria-label="Menu"
         aria-hidden={!open}
         ref={dialogRef}
-        className={`fixed left-0 right-0 top-0 z-50 mx-auto w-full max-w-[520px] px-4 pt-4 transition-[opacity,transform] duration-200 ease-out ${
-          open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
+        className={`mobile-nav-drawer__container ${drawerStateClass} fixed bottom-0 right-0 top-0 z-50 w-full max-w-[320px] pl-4 py-4 ${
+          open ? '' : 'pointer-events-none'
         }`}
       >
-        <div className="rounded-xl border border-white/10 bg-[rgb(12_14_20_/_92%)] p-3 shadow-[0_16px_48px_rgba(0,0,0,0.35)]">
-          <nav aria-label="Navigation principale (mobile)" className="flex flex-col gap-3">
-            <Button label="Fermer le menu" variant="primary" isOutline size="sm" onClick={onRequestClose} />
-            {links.map((link) => (
+        <div className="mobile-nav-drawer__panel h-full rounded-l-2xl border border-white/10 bg-[rgb(12_14_20_/_98%)] p-3 shadow-[0_16px_48px_rgba(0,0,0,0.35)]">
+          <div className="flex items-center justify-end gap-3">
+            <button
+              type="button"
+              className="tap-target inline-flex items-center justify-center rounded-md border border-transparent bg-white/0 hover:bg-white/5 focus-visible:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+              aria-label="Fermer le menu"
+              onClick={onRequestClose}
+            >
+              <X className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </div>
+
+          <nav aria-label="Navigation principale (mobile)" className="mt-4 flex flex-col gap-4">
+            {mainLinks.map((link) => (
               <Button
                 key={link.href}
                 label={link.label}
@@ -174,11 +172,32 @@ export default function MobileNavDrawer({
                 disabled={link.disabled}
                 ariaCurrent={pathname === link.href ? 'page' : undefined}
                 onClick={onRequestClose}
+                className="w-full justify-center"
               />
             ))}
           </nav>
+
+          {contactLink ? (
+            <div className="mt-4 border-t border-white/10 pt-4">
+              <Button
+                label={contactLink.label}
+                href={contactLink.href}
+                variant={contactLink.variant}
+                size="sm"
+                isOutline={contactLink.isOutline}
+                disabled={contactLink.disabled}
+                ariaCurrent={pathname === contactLink.href ? 'page' : undefined}
+                onClick={onRequestClose}
+                className="w-full justify-center"
+              />
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
   );
+
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(sheet, document.body);
 }

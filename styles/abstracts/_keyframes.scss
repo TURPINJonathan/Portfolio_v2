@@ -59,6 +59,23 @@
   }
 }
 
+@keyframes bannerSweepReverse {
+  0% {
+    opacity: 1;
+    transform: translateX(135%) skewX(12deg) scaleY(1.06);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateX(-120%) skewX(12deg) scaleY(1.06);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-165%) skewX(12deg) scaleY(1.06);
+  }
+}
+
 @keyframes cardEnter {
   0% {
     opacity: 0;
@@ -78,5 +95,53 @@
 
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes mobileDrawerIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(96px, 0, 0) scale(0.992) skewX(-2deg);
+    filter: blur(18px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) skewX(0deg);
+    filter: blur(0px);
+  }
+}
+
+@keyframes mobileDrawerOut {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) skewX(0deg);
+    filter: blur(0px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(112px, 0, 0) scale(0.985) skewX(2deg);
+    filter: blur(18px);
+  }
+}
+
+@keyframes mobileDrawerOverlayIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes mobileDrawerOverlayOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }

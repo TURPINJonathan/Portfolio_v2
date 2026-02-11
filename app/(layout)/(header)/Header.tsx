@@ -26,7 +26,7 @@ export default function HeaderLayout() {
   const closeMenu = useCallback((): void => {
     setIsMenuOpen(false);
     if (closeTimerRef.current) window.clearTimeout(closeTimerRef.current);
-    closeTimerRef.current = window.setTimeout(() => setIsMenuMounted(false), 200);
+    closeTimerRef.current = window.setTimeout(() => setIsMenuMounted(false), 360);
   }, []);
 
   const toggleMenu = useCallback((): void => {
@@ -84,7 +84,7 @@ export default function HeaderLayout() {
           </div>
 
           <div className="ml-auto flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-3">
+            <div className="flex items-center gap-3">
               <Button label="Contactez-moi" href="/contact" variant="accent" size="sm" />
             </div>
 

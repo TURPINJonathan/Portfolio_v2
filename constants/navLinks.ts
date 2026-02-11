@@ -1,4 +1,4 @@
-import type { MobileNavLink } from '@layout/(header)/MobileNavDrawer';
+import type { MobileNavLink } from '@types';
 
 export const MOBILE_NAV_LINKS: MobileNavLink[] = [
   { label: 'Accueil', href: '/', variant: 'primary', isOutline: true },

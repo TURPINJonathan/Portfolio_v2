@@ -192,6 +192,169 @@ pre {
   }
 }
 
+.mobile-nav-drawer {
+  --drawer-duration-open: var(--motion-duration-slow);
+  --drawer-duration-close: 360ms;
+  --drawer-ease-open: cubic-bezier(0.16, 1, 0.3, 1);
+  --drawer-ease-close: cubic-bezier(0.65, 0, 0.35, 1);
+
+  &__overlay {
+    will-change: opacity;
+
+    &.is-open {
+      animation: mobileDrawerOverlayIn var(--drawer-duration-open) var(--drawer-ease-open) both;
+    }
+
+    &.is-closing {
+      animation: mobileDrawerOverlayOut var(--drawer-duration-close) var(--drawer-ease-close) both;
+    }
+  }
+
+  &__container {
+    will-change: transform, opacity, filter;
+
+    &.is-open {
+      pointer-events: auto;
+      animation: mobileDrawerIn var(--drawer-duration-open) var(--drawer-ease-open) both;
+    }
+
+    &.is-closing {
+      pointer-events: none;
+      animation: mobileDrawerOut var(--drawer-duration-close) var(--drawer-ease-close) both;
+    }
+  }
+
+  &__panel {
+    position: relative;
+    overflow: clip;
+    isolation: isolate;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      pointer-events: none;
+      z-index: 0;
+
+      background:
+        radial-gradient(900px 280px at 18% 18%, var(--card-frame-1), transparent 60%),
+        radial-gradient(850px 260px at 82% 38%, var(--card-frame-2), transparent 60%),
+        radial-gradient(800px 240px at 65% 88%, var(--card-frame-3), transparent 60%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.07)),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.05) 0px,
+          rgba(255, 255, 255, 0.05) 1px,
+          rgba(0, 0, 0, 0) 2px,
+          rgba(0, 0, 0, 0) 10px
+        ),
+        repeating-linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.06) 0px,
+          rgba(255, 255, 255, 0.06) 1px,
+          rgba(0, 0, 0, 0) 2px,
+          rgba(0, 0, 0, 0) 6px
+        );
+
+      mix-blend-mode: screen;
+      filter: blur(0.6px) saturate(1.2) contrast(1.04);
+      opacity: 0;
+      border-radius: 24px;
+      transform: translateZ(0);
+      transition: opacity var(--drawer-duration-open) var(--drawer-ease-open);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      pointer-events: none;
+      z-index: 0;
+
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0)),
+        radial-gradient(900px 280px at 20% 20%, rgba(124, 58, 237, 0.35), transparent 60%),
+        radial-gradient(850px 260px at 80% 40%, rgba(34, 211, 238, 0.25), transparent 60%),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.05) 0px,
+          rgba(255, 255, 255, 0.05) 1px,
+          rgba(0, 0, 0, 0) 2px,
+          rgba(0, 0, 0, 0) 10px
+        ),
+        repeating-linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.06) 0px,
+          rgba(255, 255, 255, 0.06) 1px,
+          rgba(0, 0, 0, 0) 2px,
+          rgba(0, 0, 0, 0) 6px
+        );
+
+      mix-blend-mode: screen;
+      filter: blur(0.6px) saturate(1.2) contrast(1.05);
+      opacity: 0;
+      border-radius: 24px;
+    }
+  }
+
+  &__panel > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.mobile-nav-drawer__container.is-open .mobile-nav-drawer__panel::before {
+  opacity: 0.85;
+  animation: bannerSweep 780ms var(--motion-ease) both;
+}
+
+.mobile-nav-drawer__container.is-open .mobile-nav-drawer__panel::after {
+  opacity: 0.9;
+  animation: bannerSweep 820ms var(--drawer-ease-open) both;
+}
+
+.mobile-nav-drawer__container.is-closing .mobile-nav-drawer__panel::after {
+  opacity: 0.75;
+  animation: bannerSweepReverse 920ms var(--drawer-ease-close) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-drawer {
+    &__overlay,
+    &__container {
+      animation: none !important;
+    }
+
+    &__overlay.is-open {
+      opacity: 1;
+    }
+
+    &__overlay.is-closing {
+      opacity: 0;
+    }
+
+    &__container.is-open {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      filter: none;
+    }
+
+    &__container.is-closing {
+      opacity: 0;
+      transform: translate3d(28px, 0, 0);
+      filter: none;
+    }
+
+    &__panel::before {
+      display: none;
+    }
+
+    &__panel::after {
+      display: none;
+    }
+  }
+}
+
 :where(a, button, input, textarea, select, summary, [tabindex]:not([tabindex='-1'])):focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: var(--focus-ring-offset);

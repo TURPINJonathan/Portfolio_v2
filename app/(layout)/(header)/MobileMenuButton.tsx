@@ -2,11 +2,7 @@
 
 import { forwardRef } from 'react';
 
-export interface MobileMenuButtonProps {
-  open: boolean;
-  controlsId: string;
-  onToggle: () => void;
-}
+import type { MobileMenuButtonProps } from '@types';
 
 const MobileMenuButton = forwardRef<HTMLButtonElement, MobileMenuButtonProps>(function MobileMenuButton(
   { open, controlsId, onToggle },
