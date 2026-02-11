@@ -3,7 +3,7 @@
 import { FormEvent, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { Button } from '@components';
+import { Button, Select } from '@components';
 
 type Civility = 'madame' | 'monsieur' | 'autre' | 'non_specifiee';
 
@@ -182,20 +182,26 @@ export default function ContactForm({ className }: IContactFormProps) {
             <label className="block text-sm" htmlFor="civility">
               Appellation
             </label>
-            <select
+            <Select<Civility>
               id="civility"
               name="civility"
               value={civility}
-              onChange={(e) => setCivility(e.target.value as Civility)}
-              className="mt-1 w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 pr-10 truncate"
-              aria-invalid={Boolean(errors.civility)}
-            >
-              <option value="non_specifiee"></option>
-              <option value="madame">Madame</option>
-              <option value="monsieur">Monsieur</option>
-              <option value="autre">Ne souhaite pas préciser</option>
-            </select>
-            {errors.civility ? <p className="mt-1 text-sm text-red-300">{errors.civility}</p> : null}
+              onChange={setCivility}
+              invalid={Boolean(errors.civility)}
+              describedById={errors.civility ? 'civility-error' : undefined}
+              placeholder="Sélectionner…"
+              options={[
+                { value: 'non_specifiee', label: '—', disabled: true },
+                { value: 'madame', label: 'Madame' },
+                { value: 'monsieur', label: 'Monsieur' },
+                { value: 'autre', label: 'Ne souhaite pas préciser' },
+              ]}
+            />
+            {errors.civility ? (
+              <p id="civility-error" className="mt-1 text-sm text-red-300">
+                {errors.civility}
+              </p>
+            ) : null}
           </div>
 
           {/* lastname */}
