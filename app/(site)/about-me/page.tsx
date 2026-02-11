@@ -135,62 +135,61 @@ export default function AboutMePage() {
               </a>
             </p>
 
-            <p className="flex items-center">
+            <p className="flex items-center flex-wrap gap-1">
               Je suis également disponible sur&nbsp;
-              <Button
-                href={linkedInLink?.href}
-                variant="primary"
-                isOutline
-                size="xs"
-                disabled={!linkedInLink?.href}
-                ariaLabel={`${linkedInLink?.label}${linkedInLink?.href ? '' : ' (non configuré)'}`}
-                external={linkedInLink?.isExternal}
-              >
-                {linkedInLink && (
-                  <linkedInLink.Icon aria-hidden={true} focusable={false} className={`h-4 w-4 origin-center`} />
-                )}
-                <span className="ml-1">{linkedInLink?.label}</span>
-              </Button>
-              ,&nbsp;
-              <Button
-                href={maltLink?.href}
-                variant="primary"
-                isOutline
-                size="xs"
-                disabled={!maltLink?.href}
-                ariaLabel={`${maltLink?.label}${maltLink?.href ? '' : ' (non configuré)'}`}
-                external={maltLink?.isExternal}
-              >
-                {maltLink && (
-                  <maltLink.Icon aria-hidden={true} focusable={false} className={`h-4 w-4 origin-center scale-150`} />
-                )}
-                <span className="ml-1">{maltLink?.label}</span>
-              </Button>
-              , ou le formulaire de&nbsp;
-              <Button
-                href="/contact"
-                variant="primary"
-                isOutline
-                size="xs"
-                disabled={false}
-                ariaLabel="Formulaire de contact"
-                external={false}
-              >
-                <FiMail aria-hidden={true} focusable={false} className="h-4 w-4 origin-center" />
-                <span className="ml-1">contact</span>
-              </Button>
-              .
+              <span>
+                <Button
+                  href={linkedInLink?.href}
+                  variant="primary"
+                  isOutline
+                  size="xs"
+                  disabled={!linkedInLink?.href}
+                  ariaLabel={`${linkedInLink?.label}${linkedInLink?.href ? '' : ' (non configuré)'}`}
+                  external={linkedInLink?.isExternal}
+                >
+                  {linkedInLink && (
+                    <linkedInLink.Icon aria-hidden={true} focusable={false} className={`h-4 w-4 origin-center`} />
+                  )}
+                  <span className="ml-1">{linkedInLink?.label}</span>
+                </Button>
+                ,&nbsp;
+              </span>
+              <span>
+                <Button
+                  href={maltLink?.href}
+                  variant="primary"
+                  isOutline
+                  size="xs"
+                  disabled={!maltLink?.href}
+                  ariaLabel={`${maltLink?.label}${maltLink?.href ? '' : ' (non configuré)'}`}
+                  external={maltLink?.isExternal}
+                >
+                  {maltLink && (
+                    <maltLink.Icon aria-hidden={true} focusable={false} className={`h-4 w-4 origin-center scale-150`} />
+                  )}
+                  <span className="ml-1">{maltLink?.label}</span>
+                </Button>
+                ,{' '}
+              </span>
+              <span>
+                ou le formulaire de&nbsp;
+                <Button
+                  href="/contact"
+                  variant="primary"
+                  isOutline
+                  size="xs"
+                  disabled={false}
+                  ariaLabel="Formulaire de contact"
+                  external={false}
+                >
+                  <FiMail aria-hidden={true} focusable={false} className="h-4 w-4 origin-center" />
+                  <span className="ml-1">contact</span>
+                </Button>
+                .
+              </span>
             </p>
           </article>
         </section>
-
-        {/* <h2 className="mt-8">Ce que je privilégie</h2>
-      <ul className="mt-3 list-disc pl-5">
-        <li>Sémantique HTML et accessibilité (a11y) dès le départ</li>
-        <li>Performance (Core Web Vitals), qualité front et back</li>
-        <li>SEO technique propre (metadata, canonical, robots/sitemap)</li>
-        <li>DX et maintenabilité (TypeScript, composants réutilisables)</li>
-      </ul> */}
       </section>
     </>
   );
